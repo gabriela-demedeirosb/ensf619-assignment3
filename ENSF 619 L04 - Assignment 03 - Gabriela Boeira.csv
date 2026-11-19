@@ -1,0 +1,1949 @@
+config,q_id,question,reference_answer,ref_page,embed_model,chunk_size,overlap,k,T_retriever_ms,T_generator_ms,T_total_ms,T_in_tokens,prompt_tokens_full,output_tokens,co2e_g,answer,retrieved_chunks,pass_fail
+A,1,How many survey responses did the system record in total before cleaning?,111,12,sentence-transformers/all-MiniLM-L6-v2,256,50,8,7.49,758.94,766.43,2061,2164,4,0.005111209382,111,"37. Publication date: April 2026.
+137:12 E. Sesari et al.
+Details about data storage, anonymity, and the handling of sensitive information were provided
+in the Participant Information Sheet, which is included in the Supplementary Materials [1]. The
+informed consent form is also available.
+4.2 Pre-Processing and Assessing Survey Data Quality
+The survey was made available on 2 January 2024 and remained open for 2 months. During this
+period, the survey system recorded a total of 111 responses. All respondents provided their consent
+and responded to the questions.
+We began by cleaning the responses, removing those who were not software practitioners.
+Respondents who selected “other” for their profession but did not specify were labeled as “prefer
+not to say.”
+Weimplementedresponsetimeanalysisasaproxyfordetectinginattentiveorcarelessresponses,
+consistent with recommendations in the survey methodology literature [101]. Responses completed
+in less than 1 minute were flagged as likely inattentive. While explicit attention-check questions
+are common in some survey designs, we chose not to include them to maintain engagement and
+trust among respondents. Prior |||  producing population-level estimates. As Baltes and Ralph emphasize in their critical
+review of sampling in SE research, “there is no universally correct sample size,” and what matters
+is how well the sampling strategy supports the intended claims of a study [10]. They further argue
+that when a study aims to explore social or organizational constructs, diversity of experience and
+transparent reporting are often more meaningful than statistical representativeness. Following
+these recommendations, we prioritized recruiting participants across a range of demographics and
+clearly report our sampling limitations to avoid overgeneralization.
+ACM Transactions on Software Engineering and Methodology, Vol. 35, No. 5, Article 137. Publication date: April 2026.
+137:14 E. Sesari et al.
+4.3 Summarizing Responses
+To summarize the responses, we employed various data analysis techniques. First, we calculated
+descriptive statistics for each survey item to help us understand trends in the responses. We then
+visualized these responses using box plots and bar charts to provide a clear data distribution. Box
+plotshelpedidentifyoutliersandthespreadofresponses,whilebarchartsmadeiteasiertocompare
+response frequencies across items |||  quality for very fast responses. We also examined responses with
+durationsbeyondthethirdquartile(Q3),rangingfrom17 minutesto ∼6 days.Theextendedresponse
+times might be due to allowing respondents to return to the survey later, as their progress remains
+saved even if the tab is left open. Therefore, we did not find it necessary to exclude these, as longer
+completion times do not necessarily correlate with lower data quality.
+Recognizing that respondents should not be forced to choose an answer that does not accurately
+reflect their situation, we included a “not applicable” option in our survey [39]. For responses
+with “not applicable” answers, we faced two choices regarding data analysis: either eliminate
+the entire response or replace the missing values with the closest estimated values. Eliminating
+responses could reduce the sample size and, in some cases, exclude participants whose input
+might still be valuable for other parts of the survey. Deleting responses risks introducing bias
+or underrepresenting certain demographics, which is why we opted for the latter approach of
+estimation to preserve as much useful data as possible.
+To do this, we applied Multiple Imputation by Chained Equations (MICE) using Predict ||| ness
+Regarding interactions with managers or lead in your team, to what extent:
+Has (the authority figure who enacted the procedure) treated you in a polite manner?
+Has (the authority figure who enacted the procedure) treated you with dignity?
+Has (the authority figure who enacted the procedure) treated you with respect?
+Has (the authority figure who enacted the procedure) refrained from improper remarks or comments?
+Informational Fairness
+Regarding communication with managers or leads in your team, to what extent:
+Has (the authority figure who enacted the procedure) been candid in their communications with you?
+Has (the authority figure who enacted the procedure) explained the procedures thoroughly?
+Were (the authority figure who enacted the procedure)’s explanations regarding the procedures reasonable?
+Has (the authority figure who enacted the procedure) communicated details in a timely manner?
+Has (the authority figure who enacted the procedure) seemed to tailor their communications to individual’s specific needs?
+and internal survey comments. The final version, which gathered a total of 640 responses, identified
+44 factors influencing job satisfaction in SE.
+In designing our survey, we draw inspiration from the 44 job satisfaction factors and 1 overall
+job satisfaction question used by Storey et al. [115]. |||  reached those most likely to provide
+valuable responses. We also promoted the survey in person during a workshop presentation given
+by the third author. At the workshop, we talked to attendees about the survey and handed out
+flyers with the survey link, allowing us to engage directly with software practitioners who were
+interested in our study. Geographically, most of our contacts reside in Europe and Asia.
+4.1.6 Ethical Considerations. This study was approved by the relevant ethics committees at the
+authors’ institutions under approval numbers 97126442 and UCL/CSREC/R/40. All participants
+were informed of the purpose of the study, their rights, and the handling of their data through a
+participant information sheet and informed consent form, both of which were presented before
+the survey began. Participants provided their explicit consent before proceeding with the survey.
+ACM Transactions on Software Engineering and Methodology, Vol. 35, No. 5, Article 137. Publication date: April 2026.
+137:12 E. Sesari et al.
+Details about data storage, anonymity, and the handling of sensitive information were provided
+in the Participant Information Sheet, which is |||  tools, or assistive technology) impact
+the developers.
+ACM Transactions on Software Engineering and Methodology, Vol. 35, No. 5, Article 137. Publication date: April 2026.
+Fairness Matters for Software Practitioners 137:35
+7 Threats to Validity
+Construct Validity. Since perceptions of fairness and job satisfaction are subjective, individual
+interpretations of survey questions may vary based on personal experiences or biases. To minimize
+this, we used well-established frameworks, including the fairness theory by Colquitt [29] and the
+job satisfaction model by Storey et al. [115]. These scales have been rigorously tested and help
+ensure that the questions measure what they are intended to. We also ensured anonymity in the
+survey and conducted a pilot test with six respondents to refine any unclear questions and adjust
+wording based on feedback.
+Like many survey-based studies, our findings rely on self-reported responses, which may be
+subject to biases such as social desirability or recall bias. While we mitigated some of these risks by
+ensuring anonymity and using validated survey instruments, we recognize that participants may
+still over- or under-report certain ||| 
+reliability than Cronbach’s alpha when factor loadings vary [85]. The Omega values were strong
+across all constructs, with 0.94 for fairness perceptions, 0.93 for job satisfaction, and 0.89 for
+fairness contexts. These results indicate a high level of reliability, which confirm that the variance
+in responses is largely attributable to consistent underlying constructs. Notably, Omega values
+remained stable before and after multiple imputation, which demonstrate that our handling of
+missing data did not compromise reliability. After pre-processing, we retained 108 responses for
+analysis.
+As mentioned in Section 4.1.5, we employed purposive sampling focused on recruiting software
+practitioners from diverse backgrounds to align our sampling strategy with our study’s exploratory
+goals. While our final sample includes 108 respondents, this size is appropriate for our research
+objective: examining theorized relationships between fairness perceptions and job satisfaction,
+rather than producing population-level estimates. As Baltes and Ralph emphasize in their critical
+review of sampling in SE research, “there is no universally correct sample size,” and what matters
+is how well the sampling strategy supports the intended claims of a study [1 ||| 01]. Responses completed
+in less than 1 minute were flagged as likely inattentive. While explicit attention-check questions
+are common in some survey designs, we chose not to include them to maintain engagement and
+trust among respondents. Prior research indicates that experienced participants may recognize
+such checks, potentially reducing their effectiveness and introducing bias [5, 99].
+We established a threshold to detect outliers, focusing on extremely short response times, such
+as responses completed in less than 1 minute. Using the Interquartile Range (IQR) method, we
+identified responses with durations in the first quartile as potential outliers. The shortest response
+time was 0.6 minutes, which we deemed too short to yield meaningful data given the expected 10-
+minute duration. Research supports that very quick survey completions can indicate less attentive
+responses [136]. On reviewing the 0.6-minute response, we found missing answers in key areas,
+reinforcing concerns about data quality for very fast responses. We also examined responses with
+durationsbeyondthethirdquartile(Q3),rangingfrom17 minutesto ∼6 days.Theextendedresponse
+times might be due to",Pass
+B,1,How many survey responses did the system record in total before cleaning?,111,12,BAAI/bge-small-en-v1.5,512,50,3,11.81,582.42,594.23,1549,1618,4,0.003952941826,111,"0. All participants
+were informed of the purpose of the study, their rights, and the handling of their data through a
+participant information sheet and informed consent form, both of which were presented before
+the survey began. Participants provided their explicit consent before proceeding with the survey.
+ACM Transactions on Software Engineering and Methodology, Vol. 35, No. 5, Article 137. Publication date: April 2026.
+137:12 E. Sesari et al.
+Details about data storage, anonymity, and the handling of sensitive information were provided
+in the Participant Information Sheet, which is included in the Supplementary Materials [1]. The
+informed consent form is also available.
+4.2 Pre-Processing and Assessing Survey Data Quality
+The survey was made available on 2 January 2024 and remained open for 2 months. During this
+period, the survey system recorded a total of 111 responses. All respondents provided their consent
+and responded to the questions.
+We began by cleaning the responses, removing those who were not software practitioners.
+Respondents who selected “other” for their profession but did not specify were labeled as “prefer
+not to say.”
+Weimplementedresponsetimeanalysisasaproxyfordetectinginattentiveorcarelessresponses,
+consistent with recommendations in the survey methodology literature [101]. Responses completed
+in less than 1 minute were flagged as likely inattentive. While explicit attention-check questions
+are common in some survey designs, we chose not to include them to maintain engagement and
+trust among respondents. Prior research indicates that experienced participants may recognize
+such checks, potentially reducing their effectiveness and introducing bias [5, 99].
+We established a threshold to detect outliers, focusing on extremely short response times, such
+as responses completed in less than 1 minute. Using the Interquartile Range (IQR) method, we
+identified responses with durations in the first quartile as potential outliers. The shortest response
+time was 0.6 minutes, which we deemed too short to yield meaningful data given the expected 10-
+minute duration. Research supports that very quick survey completions can indicate less attentive
+responses [136]. On reviewing the 0.6-minute response, we found missing answers in key areas,
+reinforcing concerns about data quality for very fast responses. We also examined responses with
+durationsbeyondthethirdqu |||  retained 108 responses for
+analysis.
+As mentioned in Section 4.1.5, we employed purposive sampling focused on recruiting software
+practitioners from diverse backgrounds to align our sampling strategy with our study’s exploratory
+goals. While our final sample includes 108 respondents, this size is appropriate for our research
+objective: examining theorized relationships between fairness perceptions and job satisfaction,
+rather than producing population-level estimates. As Baltes and Ralph emphasize in their critical
+review of sampling in SE research, “there is no universally correct sample size,” and what matters
+is how well the sampling strategy supports the intended claims of a study [10]. They further argue
+that when a study aims to explore social or organizational constructs, diversity of experience and
+transparent reporting are often more meaningful than statistical representativeness. Following
+these recommendations, we prioritized recruiting participants across a range of demographics and
+clearly report our sampling limitations to avoid overgeneralization.
+ACM Transactions on Software Engineering and Methodology, Vol. 35, No. 5, Article 137. Publication date: April 2026.
+137:14 E. Sesari et al.
+4.3 Summarizing Responses
+To summarize the responses, we employed various data analysis techniques. First, we calculated
+descriptive statistics for each survey item to help us understand trends in the responses. We then
+visualized these responses using box plots and bar charts to provide a clear data distribution. Box
+plotshelpedidentifyoutliersandthespreadofresponses,whilebarchartsmadeiteasiertocompare
+response frequencies across items.
+For the Likert responses to the 20-item fairness scale, analyzing individual items allows us to
+identify specific aspects of fairness that may need prioritization. However, to understand general
+trends across the four fairness dimensions, Enoksen [42] recommended aggregating the Likert
+responses by calculating the mean for each dimension. For example, we calculated the mean of
+the four items related to distributive fairness to create an aggregated descriptive statistic for this
+dimension.
+To examine demographic differences in the three perceptions, we used the Mann–Whitney
+U [82] and Kruskal–Wallis [71] tests, along with wilcoxon_effsize [121] in R for effect size.
+We focused on moderate (0.30−<0.5) and large effect sizes ||| responses [136]. On reviewing the 0.6-minute response, we found missing answers in key areas,
+reinforcing concerns about data quality for very fast responses. We also examined responses with
+durationsbeyondthethirdquartile(Q3),rangingfrom17 minutesto ∼6 days.Theextendedresponse
+times might be due to allowing respondents to return to the survey later, as their progress remains
+saved even if the tab is left open. Therefore, we did not find it necessary to exclude these, as longer
+completion times do not necessarily correlate with lower data quality.
+Recognizing that respondents should not be forced to choose an answer that does not accurately
+reflect their situation, we included a “not applicable” option in our survey [39]. For responses
+with “not applicable” answers, we faced two choices regarding data analysis: either eliminate
+the entire response or replace the missing values with the closest estimated values. Eliminating
+responses could reduce the sample size and, in some cases, exclude participants whose input
+might still be valuable for other parts of the survey. Deleting responses risks introducing bias
+or underrepresenting certain demographics, which is why we opted for the latter approach of
+estimation to preserve as much useful data as possible.
+To do this, we applied Multiple Imputation by Chained Equations (MICE) using Predictive
+Mean Matching. This method fills in missing data by matching them with similar observed values,
+ensuring completeness and consistency in our dataset. MICE has been demonstrated to be versatile
+and robust in various research domains [8, 15, 23, 134, 139].
+To ensure the validity and reliability of our survey constructs, we conducted both Exploratory
+Factor Analysis (EFA) and Confirmatory Factor Analysis (CFA), followed by an assessment of
+internal consistency using the Omega reliability coefficient [85] (Table 3).
+The EFA results aligned well with theoretical expectations. For fairness perceptions (20 items), a
+four-factor structure emerged, corresponding to Colquitt’s dimensions of distributive, procedural,
+interpersonal, and informational fairness. The model demonstrated strong fit (Root Mean Square
+Error of Approximation (RMSEA) = 0.059, Tucker-Lewis Index (TLI) = 0.937, Root Mean
+Square Residual (RMSR) = 0.04),",Pass
+A,2,How many responses were retained after pre-processing?,108,13,sentence-transformers/all-MiniLM-L6-v2,256,50,8,11.36,1055.92,1067.28,2057,2159,11,0.006609154926,108 responses were retained after pre-processing.,"37. Publication date: April 2026.
+137:12 E. Sesari et al.
+Details about data storage, anonymity, and the handling of sensitive information were provided
+in the Participant Information Sheet, which is included in the Supplementary Materials [1]. The
+informed consent form is also available.
+4.2 Pre-Processing and Assessing Survey Data Quality
+The survey was made available on 2 January 2024 and remained open for 2 months. During this
+period, the survey system recorded a total of 111 responses. All respondents provided their consent
+and responded to the questions.
+We began by cleaning the responses, removing those who were not software practitioners.
+Respondents who selected “other” for their profession but did not specify were labeled as “prefer
+not to say.”
+Weimplementedresponsetimeanalysisasaproxyfordetectinginattentiveorcarelessresponses,
+consistent with recommendations in the survey methodology literature [101]. Responses completed
+in less than 1 minute were flagged as likely inattentive. While explicit attention-check questions
+are common in some survey designs, we chose not to include them to maintain engagement and
+trust among respondents. Prior |||  quality for very fast responses. We also examined responses with
+durationsbeyondthethirdquartile(Q3),rangingfrom17 minutesto ∼6 days.Theextendedresponse
+times might be due to allowing respondents to return to the survey later, as their progress remains
+saved even if the tab is left open. Therefore, we did not find it necessary to exclude these, as longer
+completion times do not necessarily correlate with lower data quality.
+Recognizing that respondents should not be forced to choose an answer that does not accurately
+reflect their situation, we included a “not applicable” option in our survey [39]. For responses
+with “not applicable” answers, we faced two choices regarding data analysis: either eliminate
+the entire response or replace the missing values with the closest estimated values. Eliminating
+responses could reduce the sample size and, in some cases, exclude participants whose input
+might still be valuable for other parts of the survey. Deleting responses risks introducing bias
+or underrepresenting certain demographics, which is why we opted for the latter approach of
+estimation to preserve as much useful data as possible.
+To do this, we applied Multiple Imputation by Chained Equations (MICE) using Predict ||| 01]. Responses completed
+in less than 1 minute were flagged as likely inattentive. While explicit attention-check questions
+are common in some survey designs, we chose not to include them to maintain engagement and
+trust among respondents. Prior research indicates that experienced participants may recognize
+such checks, potentially reducing their effectiveness and introducing bias [5, 99].
+We established a threshold to detect outliers, focusing on extremely short response times, such
+as responses completed in less than 1 minute. Using the Interquartile Range (IQR) method, we
+identified responses with durations in the first quartile as potential outliers. The shortest response
+time was 0.6 minutes, which we deemed too short to yield meaningful data given the expected 10-
+minute duration. Research supports that very quick survey completions can indicate less attentive
+responses [136]. On reviewing the 0.6-minute response, we found missing answers in key areas,
+reinforcing concerns about data quality for very fast responses. We also examined responses with
+durationsbeyondthethirdquartile(Q3),rangingfrom17 minutesto ∼6 days.Theextendedresponse
+times might be due to ||| ness
+Regarding interactions with managers or lead in your team, to what extent:
+Has (the authority figure who enacted the procedure) treated you in a polite manner?
+Has (the authority figure who enacted the procedure) treated you with dignity?
+Has (the authority figure who enacted the procedure) treated you with respect?
+Has (the authority figure who enacted the procedure) refrained from improper remarks or comments?
+Informational Fairness
+Regarding communication with managers or leads in your team, to what extent:
+Has (the authority figure who enacted the procedure) been candid in their communications with you?
+Has (the authority figure who enacted the procedure) explained the procedures thoroughly?
+Were (the authority figure who enacted the procedure)’s explanations regarding the procedures reasonable?
+Has (the authority figure who enacted the procedure) communicated details in a timely manner?
+Has (the authority figure who enacted the procedure) seemed to tailor their communications to individual’s specific needs?
+and internal survey comments. The final version, which gathered a total of 640 responses, identified
+44 factors influencing job satisfaction in SE.
+In designing our survey, we draw inspiration from the 44 job satisfaction factors and 1 overall
+job satisfaction question used by Storey et al. [115]. ||| 
+reliability than Cronbach’s alpha when factor loadings vary [85]. The Omega values were strong
+across all constructs, with 0.94 for fairness perceptions, 0.93 for job satisfaction, and 0.89 for
+fairness contexts. These results indicate a high level of reliability, which confirm that the variance
+in responses is largely attributable to consistent underlying constructs. Notably, Omega values
+remained stable before and after multiple imputation, which demonstrate that our handling of
+missing data did not compromise reliability. After pre-processing, we retained 108 responses for
+analysis.
+As mentioned in Section 4.1.5, we employed purposive sampling focused on recruiting software
+practitioners from diverse backgrounds to align our sampling strategy with our study’s exploratory
+goals. While our final sample includes 108 respondents, this size is appropriate for our research
+objective: examining theorized relationships between fairness perceptions and job satisfaction,
+rather than producing population-level estimates. As Baltes and Ralph emphasize in their critical
+review of sampling in SE research, “there is no universally correct sample size,” and what matters
+is how well the sampling strategy supports the intended claims of a study [1 ||| 
+[5] Shahar Almog, Andrea Vásquez Ferreiro, Meredith S. Berry, and Jillian M. Rung. 2023. Are the attention checks
+embedded in delay discounting tasks a valid marker for data quality? Experimental and Clinical Psychopharmacology
+31, 5 (2023), 908.
+[6] B. M. Altman. 2014. Definitions, concepts, and measures of disability. Annals of Epidemiology 24, 1 (2014), 2–7. DOI:
+https://doi.org/10.1016/j.annepidem.2013.05.018
+[7] Reou Ando, Seiji Sato, Chihiro Uchida, Hironori Washizaki, Yoshiaki Fukazawa, Sakae Inoue, Hiroyuki Ono, Yoshiiku
+Hanai, Masanobu Kanazawa, Kazutaka Sone, et al. 2015. How Does Defect Removal Activity of Developer Vary with
+Development Experience? DOI: https://doi.org/10 |||  job satisfaction and software quality? Information and Software Technology 51, 3 (2009), 627–639. DOI:
+https://doi.org/10.1016/j.infsof.2008.08.006
+[3] J. Stacy Adams. 1965. Inequity in social exchange. In Advances in Experimental Social Psychology, Vol. 2. Academic
+Press, 267–299. DOI: https://doi.org/10.1016/S0065-2601(08)60108-2
+[4] A. Agresti. 2010. Analysis of ordinal categorical data. Wiley Series in Probability and Statistics. 2010. DOI:
+https://doi.org/10.1002/9780470594001
+[5] Shahar Almog, Andrea Vásquez Ferreiro, Meredith S. Berry, and Jillian M. Rung. 2023. Are the attention checks
+embedded in delay discounting tasks a valid ||| P4) and consistent processes (P6) are
+particularly important for underrepresented practitioners’ satisfaction with performance (PERF),
+especially in the contexts of policy (C4) (OR = 3.61, 95% CI [1.34, 8.91]) and allocation of work (C7)
+(OR = 3.08, 95% CI [1.14, 7.77]). Our findings suggest that for underrepresented developers, having
+unbiased and consistent processes is especially important for their satisfaction with performance,
+particularlyinthecontextofpolicydecisionsandworkallocation.Whentheseprocessesareinplace,
+it appears to support a stronger sense of fairness, which may contribute to greater performance
+satisfaction.
+We also found that unbiased processes (P4) is particularly important for underrepresented practi-
+tioners’overall satisfaction (ALL),especiallyinthecontextofpolicy (C4).Thissuggeststhatensuring
+unbiased processes likely helps underrepresented developers feel that they are being treated fairly,
+which can mitigate feelings of marginalization or exclusion [41].
+Work Experience. In RQ2, we found that less experienced practitioners feel more satisfied with",Pass
+B,2,How many responses were retained after pre-processing?,108,13,BAAI/bge-small-en-v1.5,512,50,3,16.38,587.11,603.48,1545,1614,4,0.003963397431,108,"responses [136]. On reviewing the 0.6-minute response, we found missing answers in key areas,
+reinforcing concerns about data quality for very fast responses. We also examined responses with
+durationsbeyondthethirdquartile(Q3),rangingfrom17 minutesto ∼6 days.Theextendedresponse
+times might be due to allowing respondents to return to the survey later, as their progress remains
+saved even if the tab is left open. Therefore, we did not find it necessary to exclude these, as longer
+completion times do not necessarily correlate with lower data quality.
+Recognizing that respondents should not be forced to choose an answer that does not accurately
+reflect their situation, we included a “not applicable” option in our survey [39]. For responses
+with “not applicable” answers, we faced two choices regarding data analysis: either eliminate
+the entire response or replace the missing values with the closest estimated values. Eliminating
+responses could reduce the sample size and, in some cases, exclude participants whose input
+might still be valuable for other parts of the survey. Deleting responses risks introducing bias
+or underrepresenting certain demographics, which is why we opted for the latter approach of
+estimation to preserve as much useful data as possible.
+To do this, we applied Multiple Imputation by Chained Equations (MICE) using Predictive
+Mean Matching. This method fills in missing data by matching them with similar observed values,
+ensuring completeness and consistency in our dataset. MICE has been demonstrated to be versatile
+and robust in various research domains [8, 15, 23, 134, 139].
+To ensure the validity and reliability of our survey constructs, we conducted both Exploratory
+Factor Analysis (EFA) and Confirmatory Factor Analysis (CFA), followed by an assessment of
+internal consistency using the Omega reliability coefficient [85] (Table 3).
+The EFA results aligned well with theoretical expectations. For fairness perceptions (20 items), a
+four-factor structure emerged, corresponding to Colquitt’s dimensions of distributive, procedural,
+interpersonal, and informational fairness. The model demonstrated strong fit (Root Mean Square
+Error of Approximation (RMSEA) = 0.059, Tucker-Lewis Index (TLI) = 0.937, Root Mean
+Square Residual (RMSR) = 0.04), ||| 0. All participants
+were informed of the purpose of the study, their rights, and the handling of their data through a
+participant information sheet and informed consent form, both of which were presented before
+the survey began. Participants provided their explicit consent before proceeding with the survey.
+ACM Transactions on Software Engineering and Methodology, Vol. 35, No. 5, Article 137. Publication date: April 2026.
+137:12 E. Sesari et al.
+Details about data storage, anonymity, and the handling of sensitive information were provided
+in the Participant Information Sheet, which is included in the Supplementary Materials [1]. The
+informed consent form is also available.
+4.2 Pre-Processing and Assessing Survey Data Quality
+The survey was made available on 2 January 2024 and remained open for 2 months. During this
+period, the survey system recorded a total of 111 responses. All respondents provided their consent
+and responded to the questions.
+We began by cleaning the responses, removing those who were not software practitioners.
+Respondents who selected “other” for their profession but did not specify were labeled as “prefer
+not to say.”
+Weimplementedresponsetimeanalysisasaproxyfordetectinginattentiveorcarelessresponses,
+consistent with recommendations in the survey methodology literature [101]. Responses completed
+in less than 1 minute were flagged as likely inattentive. While explicit attention-check questions
+are common in some survey designs, we chose not to include them to maintain engagement and
+trust among respondents. Prior research indicates that experienced participants may recognize
+such checks, potentially reducing their effectiveness and introducing bias [5, 99].
+We established a threshold to detect outliers, focusing on extremely short response times, such
+as responses completed in less than 1 minute. Using the Interquartile Range (IQR) method, we
+identified responses with durations in the first quartile as potential outliers. The shortest response
+time was 0.6 minutes, which we deemed too short to yield meaningful data given the expected 10-
+minute duration. Research supports that very quick survey completions can indicate less attentive
+responses [136]. On reviewing the 0.6-minute response, we found missing answers in key areas,
+reinforcing concerns about data quality for very fast responses. We also examined responses with
+durationsbeyondthethirdqu |||  retained 108 responses for
+analysis.
+As mentioned in Section 4.1.5, we employed purposive sampling focused on recruiting software
+practitioners from diverse backgrounds to align our sampling strategy with our study’s exploratory
+goals. While our final sample includes 108 respondents, this size is appropriate for our research
+objective: examining theorized relationships between fairness perceptions and job satisfaction,
+rather than producing population-level estimates. As Baltes and Ralph emphasize in their critical
+review of sampling in SE research, “there is no universally correct sample size,” and what matters
+is how well the sampling strategy supports the intended claims of a study [10]. They further argue
+that when a study aims to explore social or organizational constructs, diversity of experience and
+transparent reporting are often more meaningful than statistical representativeness. Following
+these recommendations, we prioritized recruiting participants across a range of demographics and
+clearly report our sampling limitations to avoid overgeneralization.
+ACM Transactions on Software Engineering and Methodology, Vol. 35, No. 5, Article 137. Publication date: April 2026.
+137:14 E. Sesari et al.
+4.3 Summarizing Responses
+To summarize the responses, we employed various data analysis techniques. First, we calculated
+descriptive statistics for each survey item to help us understand trends in the responses. We then
+visualized these responses using box plots and bar charts to provide a clear data distribution. Box
+plotshelpedidentifyoutliersandthespreadofresponses,whilebarchartsmadeiteasiertocompare
+response frequencies across items.
+For the Likert responses to the 20-item fairness scale, analyzing individual items allows us to
+identify specific aspects of fairness that may need prioritization. However, to understand general
+trends across the four fairness dimensions, Enoksen [42] recommended aggregating the Likert
+responses by calculating the mean for each dimension. For example, we calculated the mean of
+the four items related to distributive fairness to create an aggregated descriptive statistic for this
+dimension.
+To examine demographic differences in the three perceptions, we used the Mann–Whitney
+U [82] and Kruskal–Wallis [71] tests, along with wilcoxon_effsize [121] in R for effect size.
+We focused on moderate (0.30−<0.5) and large effect sizes",Pass
+A,3,Responses completed in less than how long were flagged as likely inattentive?,Less than 1 minute,12,sentence-transformers/all-MiniLM-L6-v2,256,50,8,8.33,1370.14,1378.47,2064,2166,18,0.008940091922,Responses completed in less than 1 minute were flagged as likely inattentive.,"01]. Responses completed
+in less than 1 minute were flagged as likely inattentive. While explicit attention-check questions
+are common in some survey designs, we chose not to include them to maintain engagement and
+trust among respondents. Prior research indicates that experienced participants may recognize
+such checks, potentially reducing their effectiveness and introducing bias [5, 99].
+We established a threshold to detect outliers, focusing on extremely short response times, such
+as responses completed in less than 1 minute. Using the Interquartile Range (IQR) method, we
+identified responses with durations in the first quartile as potential outliers. The shortest response
+time was 0.6 minutes, which we deemed too short to yield meaningful data given the expected 10-
+minute duration. Research supports that very quick survey completions can indicate less attentive
+responses [136]. On reviewing the 0.6-minute response, we found missing answers in key areas,
+reinforcing concerns about data quality for very fast responses. We also examined responses with
+durationsbeyondthethirdquartile(Q3),rangingfrom17 minutesto ∼6 days.Theextendedresponse
+times might be due to ||| 37. Publication date: April 2026.
+137:12 E. Sesari et al.
+Details about data storage, anonymity, and the handling of sensitive information were provided
+in the Participant Information Sheet, which is included in the Supplementary Materials [1]. The
+informed consent form is also available.
+4.2 Pre-Processing and Assessing Survey Data Quality
+The survey was made available on 2 January 2024 and remained open for 2 months. During this
+period, the survey system recorded a total of 111 responses. All respondents provided their consent
+and responded to the questions.
+We began by cleaning the responses, removing those who were not software practitioners.
+Respondents who selected “other” for their profession but did not specify were labeled as “prefer
+not to say.”
+Weimplementedresponsetimeanalysisasaproxyfordetectinginattentiveorcarelessresponses,
+consistent with recommendations in the survey methodology literature [101]. Responses completed
+in less than 1 minute were flagged as likely inattentive. While explicit attention-check questions
+are common in some survey designs, we chose not to include them to maintain engagement and
+trust among respondents. Prior |||  quality for very fast responses. We also examined responses with
+durationsbeyondthethirdquartile(Q3),rangingfrom17 minutesto ∼6 days.Theextendedresponse
+times might be due to allowing respondents to return to the survey later, as their progress remains
+saved even if the tab is left open. Therefore, we did not find it necessary to exclude these, as longer
+completion times do not necessarily correlate with lower data quality.
+Recognizing that respondents should not be forced to choose an answer that does not accurately
+reflect their situation, we included a “not applicable” option in our survey [39]. For responses
+with “not applicable” answers, we faced two choices regarding data analysis: either eliminate
+the entire response or replace the missing values with the closest estimated values. Eliminating
+responses could reduce the sample size and, in some cases, exclude participants whose input
+might still be valuable for other parts of the survey. Deleting responses risks introducing bias
+or underrepresenting certain demographics, which is why we opted for the latter approach of
+estimation to preserve as much useful data as possible.
+To do this, we applied Multiple Imputation by Chained Equations (MICE) using Predict |||  job satisfaction and software quality? Information and Software Technology 51, 3 (2009), 627–639. DOI:
+https://doi.org/10.1016/j.infsof.2008.08.006
+[3] J. Stacy Adams. 1965. Inequity in social exchange. In Advances in Experimental Social Psychology, Vol. 2. Academic
+Press, 267–299. DOI: https://doi.org/10.1016/S0065-2601(08)60108-2
+[4] A. Agresti. 2010. Analysis of ordinal categorical data. Wiley Series in Probability and Statistics. 2010. DOI:
+https://doi.org/10.1002/9780470594001
+[5] Shahar Almog, Andrea Vásquez Ferreiro, Meredith S. Berry, and Jillian M. Rung. 2023. Are the attention checks
+embedded in delay discounting tasks a valid ||| 
+[5] Shahar Almog, Andrea Vásquez Ferreiro, Meredith S. Berry, and Jillian M. Rung. 2023. Are the attention checks
+embedded in delay discounting tasks a valid marker for data quality? Experimental and Clinical Psychopharmacology
+31, 5 (2023), 908.
+[6] B. M. Altman. 2014. Definitions, concepts, and measures of disability. Annals of Epidemiology 24, 1 (2014), 2–7. DOI:
+https://doi.org/10.1016/j.annepidem.2013.05.018
+[7] Reou Ando, Seiji Sato, Chihiro Uchida, Hironori Washizaki, Yoshiaki Fukazawa, Sakae Inoue, Hiroyuki Ono, Yoshiiku
+Hanai, Masanobu Kanazawa, Kazutaka Sone, et al. 2015. How Does Defect Removal Activity of Developer Vary with
+Development Experience? DOI: https://doi.org/10 ||| 1–10. DOI: https://doi.org/10.1109/ESEM.2015.7321212
+[101] Blair Read, Lukas Wolters, and Adam J. Berinsky. 2022. Racing the clock: Using response time as a proxy for
+attentiveness on self-administered surveys. Political Analysis 30, 4 (2022), 550–569.
+ACM Transactions on Software Engineering and Methodology, Vol. 35, No. 5, Article 137. Publication date: April 2026.
+137:42 E. Sesari et al.
+[102] Hana Řezanková and Richard Novák. 2019. Effect of ordinal variable transformations on hierarchical clustering
+results: A case study on the big data phenomenon. In 22nd International Scientific Conference on Applications of
+Mathematics and Statistics in Economics (AMSE ’19). Atlantis Press, 81–90.
+[103] Ariel Rodriguez, Fumiya Tanaka, and Yasutaka Kamei ||| 566–576. DOI: https://doi.org/10.1108/08858620810913371
+[39] Cristel DeRouvray and M. Couper. 2002. Designing a strategy for reducing “No opinion” responses in Web-Based
+surveys. Social Science Computer Review 20 (2002), 3–9. DOI: https://doi.org/10.1177/089443930202000101
+[40] MortonDeutsch.1975.Equity,equality,andneed:Whatdetermineswhichvaluewillbeusedasthebasisofdistributive
+justice? Journal of Social Issues 31, 3 (1975), 137–149. DOI: https://doi.org/10.1111/j.1540-4560.1975.tb01000.x
+[41] Tessa L. Dover, Cheryl R. Kaiser, and B. Major.  ||| 
+validation, such as feedback, promotions, or compensation, to gauge their progress [78, 114]. In
+contexts such as policy, working hours, allocation of work, and demand, these practitioners are
+still learning how the workplace functions and what is expected of them. When their efforts lead
+to clear, positive outcomes, they are more likely to feel valued and motivated. On the other hand, if
+their contributions are not recognized or they feel disrespected, it may lead to dissatisfaction, as
+they might interpret this as a lack of growth.
+It is observed from RQ2 that less experienced developers place a strong emphasis on receiving
+accurate information, as well as seeing processes applied consistently, when it comes to their sense
+of job security. In this analysis, where we see that context working hours (C6) is correlated with job
+security (SEC), we can say that if managers clearly communicate how many hours a project will
+require and any expectations for overtime or flexibility, and this information remains consistent
+over time, it helps less experienced practitioners understand what is expected of them. By receiving
+accurate and consistent updates about their time, these developers are more likely to feel secure
+that they can meet expectations without sudden changes",Pass
+B,3,Responses completed in less than how long were flagged as likely inattentive?,Less than 1 minute,12,BAAI/bge-small-en-v1.5,512,50,3,13.54,1407.44,1420.98,1552,1621,18,0.009929749191,Responses completed in less than 1 minute were flagged as likely inattentive.,"responses [136]. On reviewing the 0.6-minute response, we found missing answers in key areas,
+reinforcing concerns about data quality for very fast responses. We also examined responses with
+durationsbeyondthethirdquartile(Q3),rangingfrom17 minutesto ∼6 days.Theextendedresponse
+times might be due to allowing respondents to return to the survey later, as their progress remains
+saved even if the tab is left open. Therefore, we did not find it necessary to exclude these, as longer
+completion times do not necessarily correlate with lower data quality.
+Recognizing that respondents should not be forced to choose an answer that does not accurately
+reflect their situation, we included a “not applicable” option in our survey [39]. For responses
+with “not applicable” answers, we faced two choices regarding data analysis: either eliminate
+the entire response or replace the missing values with the closest estimated values. Eliminating
+responses could reduce the sample size and, in some cases, exclude participants whose input
+might still be valuable for other parts of the survey. Deleting responses risks introducing bias
+or underrepresenting certain demographics, which is why we opted for the latter approach of
+estimation to preserve as much useful data as possible.
+To do this, we applied Multiple Imputation by Chained Equations (MICE) using Predictive
+Mean Matching. This method fills in missing data by matching them with similar observed values,
+ensuring completeness and consistency in our dataset. MICE has been demonstrated to be versatile
+and robust in various research domains [8, 15, 23, 134, 139].
+To ensure the validity and reliability of our survey constructs, we conducted both Exploratory
+Factor Analysis (EFA) and Confirmatory Factor Analysis (CFA), followed by an assessment of
+internal consistency using the Omega reliability coefficient [85] (Table 3).
+The EFA results aligned well with theoretical expectations. For fairness perceptions (20 items), a
+four-factor structure emerged, corresponding to Colquitt’s dimensions of distributive, procedural,
+interpersonal, and informational fairness. The model demonstrated strong fit (Root Mean Square
+Error of Approximation (RMSEA) = 0.059, Tucker-Lewis Index (TLI) = 0.937, Root Mean
+Square Residual (RMSR) = 0.04), ||| 0. All participants
+were informed of the purpose of the study, their rights, and the handling of their data through a
+participant information sheet and informed consent form, both of which were presented before
+the survey began. Participants provided their explicit consent before proceeding with the survey.
+ACM Transactions on Software Engineering and Methodology, Vol. 35, No. 5, Article 137. Publication date: April 2026.
+137:12 E. Sesari et al.
+Details about data storage, anonymity, and the handling of sensitive information were provided
+in the Participant Information Sheet, which is included in the Supplementary Materials [1]. The
+informed consent form is also available.
+4.2 Pre-Processing and Assessing Survey Data Quality
+The survey was made available on 2 January 2024 and remained open for 2 months. During this
+period, the survey system recorded a total of 111 responses. All respondents provided their consent
+and responded to the questions.
+We began by cleaning the responses, removing those who were not software practitioners.
+Respondents who selected “other” for their profession but did not specify were labeled as “prefer
+not to say.”
+Weimplementedresponsetimeanalysisasaproxyfordetectinginattentiveorcarelessresponses,
+consistent with recommendations in the survey methodology literature [101]. Responses completed
+in less than 1 minute were flagged as likely inattentive. While explicit attention-check questions
+are common in some survey designs, we chose not to include them to maintain engagement and
+trust among respondents. Prior research indicates that experienced participants may recognize
+such checks, potentially reducing their effectiveness and introducing bias [5, 99].
+We established a threshold to detect outliers, focusing on extremely short response times, such
+as responses completed in less than 1 minute. Using the Interquartile Range (IQR) method, we
+identified responses with durations in the first quartile as potential outliers. The shortest response
+time was 0.6 minutes, which we deemed too short to yield meaningful data given the expected 10-
+minute duration. Research supports that very quick survey completions can indicate less attentive
+responses [136]. On reviewing the 0.6-minute response, we found missing answers in key areas,
+reinforcing concerns about data quality for very fast responses. We also examined responses with
+durationsbeyondthethirdqu |||  retained 108 responses for
+analysis.
+As mentioned in Section 4.1.5, we employed purposive sampling focused on recruiting software
+practitioners from diverse backgrounds to align our sampling strategy with our study’s exploratory
+goals. While our final sample includes 108 respondents, this size is appropriate for our research
+objective: examining theorized relationships between fairness perceptions and job satisfaction,
+rather than producing population-level estimates. As Baltes and Ralph emphasize in their critical
+review of sampling in SE research, “there is no universally correct sample size,” and what matters
+is how well the sampling strategy supports the intended claims of a study [10]. They further argue
+that when a study aims to explore social or organizational constructs, diversity of experience and
+transparent reporting are often more meaningful than statistical representativeness. Following
+these recommendations, we prioritized recruiting participants across a range of demographics and
+clearly report our sampling limitations to avoid overgeneralization.
+ACM Transactions on Software Engineering and Methodology, Vol. 35, No. 5, Article 137. Publication date: April 2026.
+137:14 E. Sesari et al.
+4.3 Summarizing Responses
+To summarize the responses, we employed various data analysis techniques. First, we calculated
+descriptive statistics for each survey item to help us understand trends in the responses. We then
+visualized these responses using box plots and bar charts to provide a clear data distribution. Box
+plotshelpedidentifyoutliersandthespreadofresponses,whilebarchartsmadeiteasiertocompare
+response frequencies across items.
+For the Likert responses to the 20-item fairness scale, analyzing individual items allows us to
+identify specific aspects of fairness that may need prioritization. However, to understand general
+trends across the four fairness dimensions, Enoksen [42] recommended aggregating the Likert
+responses by calculating the mean for each dimension. For example, we calculated the mean of
+the four items related to distributive fairness to create an aggregated descriptive statistic for this
+dimension.
+To examine demographic differences in the three perceptions, we used the Mann–Whitney
+U [82] and Kruskal–Wallis [71] tests, along with wilcoxon_effsize [121] in R for effect size.
+We focused on moderate (0.30−<0.5) and large effect sizes",Pass
+A,4,Which method did the authors use to fill in missing survey data?,"Multiple Imputation by Chained Equations (MICE), using Predictive Mean Matching",12,sentence-transformers/all-MiniLM-L6-v2,256,50,8,9.75,1258.71,1268.46,2061,2163,16,0.008499068453,The authors used Multiple Imputation by Chained Equations (MICE).,"37. Publication date: April 2026.
+137:12 E. Sesari et al.
+Details about data storage, anonymity, and the handling of sensitive information were provided
+in the Participant Information Sheet, which is included in the Supplementary Materials [1]. The
+informed consent form is also available.
+4.2 Pre-Processing and Assessing Survey Data Quality
+The survey was made available on 2 January 2024 and remained open for 2 months. During this
+period, the survey system recorded a total of 111 responses. All respondents provided their consent
+and responded to the questions.
+We began by cleaning the responses, removing those who were not software practitioners.
+Respondents who selected “other” for their profession but did not specify were labeled as “prefer
+not to say.”
+Weimplementedresponsetimeanalysisasaproxyfordetectinginattentiveorcarelessresponses,
+consistent with recommendations in the survey methodology literature [101]. Responses completed
+in less than 1 minute were flagged as likely inattentive. While explicit attention-check questions
+are common in some survey designs, we chose not to include them to maintain engagement and
+trust among respondents. Prior |||  quality for very fast responses. We also examined responses with
+durationsbeyondthethirdquartile(Q3),rangingfrom17 minutesto ∼6 days.Theextendedresponse
+times might be due to allowing respondents to return to the survey later, as their progress remains
+saved even if the tab is left open. Therefore, we did not find it necessary to exclude these, as longer
+completion times do not necessarily correlate with lower data quality.
+Recognizing that respondents should not be forced to choose an answer that does not accurately
+reflect their situation, we included a “not applicable” option in our survey [39]. For responses
+with “not applicable” answers, we faced two choices regarding data analysis: either eliminate
+the entire response or replace the missing values with the closest estimated values. Eliminating
+responses could reduce the sample size and, in some cases, exclude participants whose input
+might still be valuable for other parts of the survey. Deleting responses risks introducing bias
+or underrepresenting certain demographics, which is why we opted for the latter approach of
+estimation to preserve as much useful data as possible.
+To do this, we applied Multiple Imputation by Chained Equations (MICE) using Predict |||  reached those most likely to provide
+valuable responses. We also promoted the survey in person during a workshop presentation given
+by the third author. At the workshop, we talked to attendees about the survey and handed out
+flyers with the survey link, allowing us to engage directly with software practitioners who were
+interested in our study. Geographically, most of our contacts reside in Europe and Asia.
+4.1.6 Ethical Considerations. This study was approved by the relevant ethics committees at the
+authors’ institutions under approval numbers 97126442 and UCL/CSREC/R/40. All participants
+were informed of the purpose of the study, their rights, and the handling of their data through a
+participant information sheet and informed consent form, both of which were presented before
+the survey began. Participants provided their explicit consent before proceeding with the survey.
+ACM Transactions on Software Engineering and Methodology, Vol. 35, No. 5, Article 137. Publication date: April 2026.
+137:12 E. Sesari et al.
+Details about data storage, anonymity, and the handling of sensitive information were provided
+in the Participant Information Sheet, which is |||  2008. Motivation in software engineering: A systematic
+literature review. Information and Software Technology 50, 9–10 (2008), 860–878. DOI: https://doi.org/10.1016/j.infsof.
+2007.09.004
+[15] Lauren J. Beesley, I. Bondarenko, Michael R. Elliot, A. Kurian, S. Katz, and Jeremy M. G. Taylor. 2021. Multiple
+imputation with missing data indicators. Statistical Methods in Medical Research 30 (2021), 2685–2700. DOI: https:
+//doi.org/10.1177/09622802211047346
+[16] K. Behfar, M. C. Kern, and J. M. Brett. 2006. Managing challenges in multicultural teams. In National Culture and
+Groups. Emerald Group Publishing Limited, 233–262. DOI: https://doi.org/10. |||  James P. Bagrow, and Laurent Hébert-
+Dufresne. 2021. Open source ecosystems need equitable credit across contributions. Nature Computational Science 1,
+1 (2021), 2–2. DOI: https://doi.org/10.1038/s43588-020-00011-w
+[23] Geeta Chhabra, Vasudha Vashisht, and Jayanthi Ranjan. 2017. A comparison of multiple imputation methods for
+data with missing values. Indian Journal of Science and Technology 10 (2017), 1–7. DOI: https://doi.org/10.17485/IJST/
+2017/V10I19/110646
+[24] ChungChoeandM.Baldwin.2017.Durationofdisability,jobmismatchandemploymentoutcomes.AppliedEconomics
+49 (2017), 1001–1015. DOI: https://doi.org/10.1080/0003 ||| 566–576. DOI: https://doi.org/10.1108/08858620810913371
+[39] Cristel DeRouvray and M. Couper. 2002. Designing a strategy for reducing “No opinion” responses in Web-Based
+surveys. Social Science Computer Review 20 (2002), 3–9. DOI: https://doi.org/10.1177/089443930202000101
+[40] MortonDeutsch.1975.Equity,equality,andneed:Whatdetermineswhichvaluewillbeusedasthebasisofdistributive
+justice? Journal of Social Issues 31, 3 (1975), 137–149. DOI: https://doi.org/10.1111/j.1540-4560.1975.tb01000.x
+[41] Tessa L. Dover, Cheryl R. Kaiser, and B. Major.  ||| 
+reliability than Cronbach’s alpha when factor loadings vary [85]. The Omega values were strong
+across all constructs, with 0.94 for fairness perceptions, 0.93 for job satisfaction, and 0.89 for
+fairness contexts. These results indicate a high level of reliability, which confirm that the variance
+in responses is largely attributable to consistent underlying constructs. Notably, Omega values
+remained stable before and after multiple imputation, which demonstrate that our handling of
+missing data did not compromise reliability. After pre-processing, we retained 108 responses for
+analysis.
+As mentioned in Section 4.1.5, we employed purposive sampling focused on recruiting software
+practitioners from diverse backgrounds to align our sampling strategy with our study’s exploratory
+goals. While our final sample includes 108 respondents, this size is appropriate for our research
+objective: examining theorized relationships between fairness perceptions and job satisfaction,
+rather than producing population-level estimates. As Baltes and Ralph emphasize in their critical
+review of sampling in SE research, “there is no universally correct sample size,” and what matters
+is how well the sampling strategy supports the intended claims of a study [1 ||| Hanai, Masanobu Kanazawa, Kazutaka Sone, et al. 2015. How Does Defect Removal Activity of Developer Vary with
+Development Experience? DOI: https://doi.org/10.18293/SEKE2015-221
+[8] Melissa J. Azur, E. Stuart, C. Frangakis, and P. Leaf. 2011. Multiple imputation by chained equations: What is
+it and how does it work? International Journal of Methods in Psychiatric Research 20 (2011), 40-49. DOI: https:
+//doi.org/10.1002/mpr.329
+[9] Sebastian Baltes, George Park, and Alexander Serebrenik. 2020. Is 40 the new 60? How popular media portrays the
+employability of older software developers. IEEE Software 37, 6 (2020), 26–31. DOI: https://doi.org/10.1109/MS.2020.
+30141",Pass
+B,4,Which method did the authors use to fill in missing survey data?,"Multiple Imputation by Chained Equations (MICE), using Predictive Mean Matching",12,BAAI/bge-small-en-v1.5,512,50,3,16.44,1840.06,1856.5,1549,1618,27,0.01249125848,The authors used Multiple Imputation by Chained Equations (MICE) with Predictive Mean Matching to fill in missing data.,"responses [136]. On reviewing the 0.6-minute response, we found missing answers in key areas,
+reinforcing concerns about data quality for very fast responses. We also examined responses with
+durationsbeyondthethirdquartile(Q3),rangingfrom17 minutesto ∼6 days.Theextendedresponse
+times might be due to allowing respondents to return to the survey later, as their progress remains
+saved even if the tab is left open. Therefore, we did not find it necessary to exclude these, as longer
+completion times do not necessarily correlate with lower data quality.
+Recognizing that respondents should not be forced to choose an answer that does not accurately
+reflect their situation, we included a “not applicable” option in our survey [39]. For responses
+with “not applicable” answers, we faced two choices regarding data analysis: either eliminate
+the entire response or replace the missing values with the closest estimated values. Eliminating
+responses could reduce the sample size and, in some cases, exclude participants whose input
+might still be valuable for other parts of the survey. Deleting responses risks introducing bias
+or underrepresenting certain demographics, which is why we opted for the latter approach of
+estimation to preserve as much useful data as possible.
+To do this, we applied Multiple Imputation by Chained Equations (MICE) using Predictive
+Mean Matching. This method fills in missing data by matching them with similar observed values,
+ensuring completeness and consistency in our dataset. MICE has been demonstrated to be versatile
+and robust in various research domains [8, 15, 23, 134, 139].
+To ensure the validity and reliability of our survey constructs, we conducted both Exploratory
+Factor Analysis (EFA) and Confirmatory Factor Analysis (CFA), followed by an assessment of
+internal consistency using the Omega reliability coefficient [85] (Table 3).
+The EFA results aligned well with theoretical expectations. For fairness perceptions (20 items), a
+four-factor structure emerged, corresponding to Colquitt’s dimensions of distributive, procedural,
+interpersonal, and informational fairness. The model demonstrated strong fit (Root Mean Square
+Error of Approximation (RMSEA) = 0.059, Tucker-Lewis Index (TLI) = 0.937, Root Mean
+Square Residual (RMSR) = 0.04), ||| 0. All participants
+were informed of the purpose of the study, their rights, and the handling of their data through a
+participant information sheet and informed consent form, both of which were presented before
+the survey began. Participants provided their explicit consent before proceeding with the survey.
+ACM Transactions on Software Engineering and Methodology, Vol. 35, No. 5, Article 137. Publication date: April 2026.
+137:12 E. Sesari et al.
+Details about data storage, anonymity, and the handling of sensitive information were provided
+in the Participant Information Sheet, which is included in the Supplementary Materials [1]. The
+informed consent form is also available.
+4.2 Pre-Processing and Assessing Survey Data Quality
+The survey was made available on 2 January 2024 and remained open for 2 months. During this
+period, the survey system recorded a total of 111 responses. All respondents provided their consent
+and responded to the questions.
+We began by cleaning the responses, removing those who were not software practitioners.
+Respondents who selected “other” for their profession but did not specify were labeled as “prefer
+not to say.”
+Weimplementedresponsetimeanalysisasaproxyfordetectinginattentiveorcarelessresponses,
+consistent with recommendations in the survey methodology literature [101]. Responses completed
+in less than 1 minute were flagged as likely inattentive. While explicit attention-check questions
+are common in some survey designs, we chose not to include them to maintain engagement and
+trust among respondents. Prior research indicates that experienced participants may recognize
+such checks, potentially reducing their effectiveness and introducing bias [5, 99].
+We established a threshold to detect outliers, focusing on extremely short response times, such
+as responses completed in less than 1 minute. Using the Interquartile Range (IQR) method, we
+identified responses with durations in the first quartile as potential outliers. The shortest response
+time was 0.6 minutes, which we deemed too short to yield meaningful data given the expected 10-
+minute duration. Research supports that very quick survey completions can indicate less attentive
+responses [136]. On reviewing the 0.6-minute response, we found missing answers in key areas,
+reinforcing concerns about data quality for very fast responses. We also examined responses with
+durationsbeyondthethirdqu |||  retained 108 responses for
+analysis.
+As mentioned in Section 4.1.5, we employed purposive sampling focused on recruiting software
+practitioners from diverse backgrounds to align our sampling strategy with our study’s exploratory
+goals. While our final sample includes 108 respondents, this size is appropriate for our research
+objective: examining theorized relationships between fairness perceptions and job satisfaction,
+rather than producing population-level estimates. As Baltes and Ralph emphasize in their critical
+review of sampling in SE research, “there is no universally correct sample size,” and what matters
+is how well the sampling strategy supports the intended claims of a study [10]. They further argue
+that when a study aims to explore social or organizational constructs, diversity of experience and
+transparent reporting are often more meaningful than statistical representativeness. Following
+these recommendations, we prioritized recruiting participants across a range of demographics and
+clearly report our sampling limitations to avoid overgeneralization.
+ACM Transactions on Software Engineering and Methodology, Vol. 35, No. 5, Article 137. Publication date: April 2026.
+137:14 E. Sesari et al.
+4.3 Summarizing Responses
+To summarize the responses, we employed various data analysis techniques. First, we calculated
+descriptive statistics for each survey item to help us understand trends in the responses. We then
+visualized these responses using box plots and bar charts to provide a clear data distribution. Box
+plotshelpedidentifyoutliersandthespreadofresponses,whilebarchartsmadeiteasiertocompare
+response frequencies across items.
+For the Likert responses to the 20-item fairness scale, analyzing individual items allows us to
+identify specific aspects of fairness that may need prioritization. However, to understand general
+trends across the four fairness dimensions, Enoksen [42] recommended aggregating the Likert
+responses by calculating the mean for each dimension. For example, we calculated the mean of
+the four items related to distributive fairness to create an aggregated descriptive statistic for this
+dimension.
+To examine demographic differences in the three perceptions, we used the Mann–Whitney
+U [82] and Kruskal–Wallis [71] tests, along with wilcoxon_effsize [121] in R for effect size.
+We focused on moderate (0.30−<0.5) and large effect sizes",Pass
+A,5,How many items does Colquitt's fairness-perception questionnaire have?,20,7,sentence-transformers/all-MiniLM-L6-v2,256,50,8,7.79,1211.79,1219.57,2062,2163,15,0.008231604811,Colquitt's fairness-perception questionnaire has 20 items.,"Fairness, in this context, is understood as a personal judgment or evaluation of organizational
+activities, particularly regarding whether these activities are perceived as moral and praiseworthy
+[53]. To accurately assess this experience of fairness, we rely on the framework developed by
+Colquitt in 2001 [29].
+Our survey design draws inspiration from the survey questions developed by Colquitt [29],
+which consists of 20 questions. These questions assess various four dimensions of fairness, namely
+distributive, procedural, interpersonal, and informational fairness. Colquitt’s measure of fairness
+was developed through careful research, creating survey items based on key studies in the field of
+organizational justice, which examines fairness in workplaces. These items were tested in different
+settings, such as in a university classroom and a manufacturing company, to ensure they worked
+well across various environments [29].
+ByaligningwithColquitt’swell-establishedframework,weensurethatourapproachisgrounded
+in a reliable foundation. The 20 items used in our survey, as developed by Colquitt [29], are listed
+in Table 1.
+4.1.2 Measuring Job Satisfaction. Given the connection between perceptions of |||  then
+visualized these responses using box plots and bar charts to provide a clear data distribution. Box
+plotshelpedidentifyoutliersandthespreadofresponses,whilebarchartsmadeiteasiertocompare
+response frequencies across items.
+For the Likert responses to the 20-item fairness scale, analyzing individual items allows us to
+identify specific aspects of fairness that may need prioritization. However, to understand general
+trends across the four fairness dimensions, Enoksen [42] recommended aggregating the Likert
+responses by calculating the mean for each dimension. For example, we calculated the mean of
+the four items related to distributive fairness to create an aggregated descriptive statistic for this
+dimension.
+To examine demographic differences in the three perceptions, we used the Mann–Whitney
+U [82] and Kruskal–Wallis [71] tests, along with wilcoxon_effsize [121] in R for effect size.
+We focused on moderate (0.30−<0.5) and large effect sizes (>= 0.5) to highlight meaningful
+differences [121].
+The Mann–Whitney U test compares responses between two groups [82], ||| dimensionsamongsoftwarepractitioners.Whileinterpersonal
+fairness is generally perceived positively by 90% respondents, there seems to be moderate fairness
+with informational (79%), procedural (77%), and distributive fairness (77%).
+It is worth noting that while interpersonal fairness received generally positive responses (median
+and mean = 4), the other dimensions tended to cluster around a median and mean of 3, indicating a
+more neutral stance. This neutrality could mean several points. It might suggest that respondents
+viewthesituationasfairenoughandseenomajorproblems,especiallyiftheyhavenotencountered
+obvious unfairness. But it could also point to uncertainty or disengagement. Some respondents
+may not have thought much about fairness in their workplace or may lack opportunities to reflect
+on or discuss it openly.
+Further analysis revealed specific areas within each fairness dimension where perceptions varied
+significantly.Forinstance,perceptionsofproceduralfairness weremorevariableconcerningbias-free
+processes (P4), having a say in decision-making (P5), consistency in applying processes (P6), and the
+ability to appeal decisions (P7). Similarly, mixed perceptions were observed in informational fairness |||  E. Sesari et al.
+Table 1. Questions to Measure Perception of Fairness [29]
+Measure Item
+Distributive Fairness
+Think about the outcomes you receive from your job (e.g., pay, promotions), to what extent:
+Does your outcome reflect the effort you have put into your work?
+Is your outcome appropriate for the work you have completed?
+Does your outcome reflect what you have contributed to the organization?
+Is your outcome justified, given your performance?
+Procedural Fairness
+Referring to how decisions are made in your work (e.g., code review, task assignment, performance review), to what extent:
+Have you been able to express your views and feelings during those procedures?
+Have you had influence over the outcome arrived at by those procedures?
+Have those procedures been applied consistently?
+Have those procedures been free of bias?
+Have those procedures been based on accurate information?
+Have you been able to appeal the outcome arrived by those procedures?
+Have those procedures upheld ethical and moral standards?
+Interpersonal Fairness
+Regarding interactions with managers or lead in your team, to what extent:
+Has (the authority figure who enacted the procedure) treated you in a polite manner?
+Has (the authority figure who enacted the procedure) treated you with dignity?
+Has ( ||| s?
+The results of the regression analysis are summarized in the third section of Table 7. We found
+positive and significant correlations between job satisfaction and fairness experiences in specific
+SE contexts (see [1]).
+Overall job satisfaction is significantly correlated with a high level of fairness experience in
+several specific SE contexts, particularly in the areas of demand (C10) (OR = 1.73, 95% CI [1.27,
+2.37]), authorship (C9) (OR = 1.59, 95% CI [1.15, 2.18]), allocation of work (C7) (OR = 1.56, 95% CI
+[1.13, 2.17]), and policy (C4) (OR = 1.54, 95% CI [1.14, 2.08]). Additionally, as observed in RQ1, all
+four dimensions of fairness, distributive, procedural, interpersonal, and informational fairness, are
+linked to higher overall satisfaction. This suggests that activities associated with all four fairness
+dimensions in these contexts contribute to higher overall job satisfaction |||  et al. [115].
+For fairness contexts (10 items), parallel analysis suggested a unidimensional structure, which was
+supported by good fit indices (RMSEA = 0.081, TLI = 0.903, RMSR = 0.07), indicating that fairness
+experiences across SE scenarios feflect a single construct.
+CFA was subsequently performed to confirm these structures. The fairness perceptions model
+showed good fit (Comparative Fit Index(CFI) = 0.921, TLI = 0.909, RMSEA = 0.076, Standard-
+ized Root Mean Squared Residual (SRMR) = 0.076), supporting Colquitt’s 4D framework.
+The job satisfaction model demonstrated acceptable fit (CFI = 0.857, TLI = 0.830, RMSEA = 0.101,
+SRMR = 0.082), reflecting the exploratory nature of adapting the factors by Storey et al. The fair-
+ness contexts model confirmed the unidimensional structure with strong fit indices ( ||| satisfaction within various SE contexts. To do this, we applied a similar analysis to the one used
+for RQ1, focusing on the relationship between fairness experiences and job satisfaction in specific
+scenarios.
+This analysis was conducted using the MASS package in R. Additionally, we calculated Odds
+Ratios (OR) to quantify the strength of the associations, providing a clear measure of the effect
+size for each predictor variable.
+4.5.2 Moderation Analysis. Afterperformingtheordinallogisticregressionanalysis,weexplored
+howtheobservedrelationshipsdifferacrossdemographicgroupsbyemployingmoderationanalysis
+throughRQ2andRQ3.1.Moderationanalysistestswhetheravariable,suchasademographicfactor,
+influences the direction and/or strength of the relationship between an independent variable (e.g.,
+perception of fairness) and a dependent variable (e.g., job satisfaction) [13]. For example, suppose
+we find that perceptions of procedural fairness are positively associated with job satisfaction.
+A moderation analysis might examine whether this relationship is stronger for women than
+for men.
+In moderation analysis, the effect size can be positive or negative. A positive effect size indicates
+that the relationship between fairness |||  daily professional experiences. To investigate these contexts further,
+we asked survey respondents to rate the extent to which they have experienced fairness in each of
+the 10 contexts identified by Sesari et al. [107]. This approach allows us to systematically measure
+the extent to which fairness perceptions are experienced in various SE scenarios. Below is the list
+of fairness experiences in SE contexts faced by practitioners, adapted from the study by Sesari
+et al. [107]:
+—Income: fairness in how practitioners are compensated for their contributions.
+—Treatment:fairnessinhowpractitionersaretreatedandhowtheytreatothersintheworkplace.
+—Allocation of work: fairness in how tasks and responsibilities are distributed among team
+members.
+—Recruitment: fairness in the processes used to hire or onboard practitioners.
+—Working hours: fairness in expectations around the amount and distribution of working time.
+—Demand: fairness in the expectations or requests placed on practitioners by those in authority.
+—Evaluation: fairness in how work performance or contributions are assessed.
+—Authorship: fairness in how credit is assigned for contributions to code, design, or other
+outputs.
+—Policy: fairness in organizational policies or rules that affect practitioners’ work.
+—Customer/client relations:",Pass
+B,5,How many items does Colquitt's fairness-perception questionnaire have?,20,7,BAAI/bge-small-en-v1.5,512,50,3,11.95,1057,1068.96,1550,1619,15,0.007093341826,Colquitt's fairness-perception questionnaire has 20 items.,"scripts for all steps are provided in the Supplementary Material [1], and Figure 1 illustrates the
+outline of our methodology.
+4.1 Data Collection
+4.1.1 Measuring Perception of Fairness. In order to explore the relationship between fairness
+and job satisfaction among software practitioners, it is essential to first measure fairness effectively.
+Fairness, in this context, is understood as a personal judgment or evaluation of organizational
+activities, particularly regarding whether these activities are perceived as moral and praiseworthy
+[53]. To accurately assess this experience of fairness, we rely on the framework developed by
+Colquitt in 2001 [29].
+Our survey design draws inspiration from the survey questions developed by Colquitt [29],
+which consists of 20 questions. These questions assess various four dimensions of fairness, namely
+distributive, procedural, interpersonal, and informational fairness. Colquitt’s measure of fairness
+was developed through careful research, creating survey items based on key studies in the field of
+organizational justice, which examines fairness in workplaces. These items were tested in different
+settings, such as in a university classroom and a manufacturing company, to ensure they worked
+well across various environments [29].
+ByaligningwithColquitt’swell-establishedframework,weensurethatourapproachisgrounded
+in a reliable foundation. The 20 items used in our survey, as developed by Colquitt [29], are listed
+in Table 1.
+4.1.2 Measuring Job Satisfaction. Given the connection between perceptions of fairness and
+job satisfaction across various fields, we inquire if the observed link between fairness and job
+satisfaction applies in the context of SE. To develop a more tailored approach to measuring job
+satisfactionintheSEfield,weturntotheSEliterature.Storeyetal.[115]conductedacomprehensive
+survey specifically within the field of SE, aiming to identify the factors that most significantly
+impact job satisfaction among software engineers. Developed through two main iterations and
+rigorously piloted, the survey incorporated insights from a literature review, onsite observations,
+ACM Transactions on Software Engineering and Methodology, Vol. 35, No. 5, Article 137. Publication date: April 2026.
+137:8 E. Sesari et al.
+Table 1. Questions to Measure Perception of Fairness [29]
+Measure Item
+Distributive Fairness
+Think ||| bution and the quality of that contribution. German et al. [51] further studied fairness problems
+among developers involved in the OpenStack project by surveying them about the code review
+process. The survey results showed that many developers were concerned about fairness, especially
+regarding issues like equity, equal treatment, consistency, and preventing bias [51]. However, while
+these problems had been identified, the impact of facing such fairness issues on software developers
+remains unclear.
+To better understand the broader implications of fairness in the workplace, Colquitt et al. con-
+ducted a meta-analytic review of organizational justice literature, which included 120 separate
+meta-analyses of 183 empirical studies [31]. This comprehensive review examined the effects of
+organizational fairness—encompassing distributive, procedural, interpersonal, and informational
+fairness—on several outcomes, including job satisfaction. Colquitt’s findings demonstrate a signifi-
+cant link between perceptions of fairness and job satisfaction across diverse contexts. For example,
+in the healthcare sector, fairness in managerial practices has been shown to significantly influence
+nurse retention and job satisfaction [67]. In the manufacturing industry, procedural justice has
+been found to enhance employee commitment and reduce turnover intentions [70]. Similarly, in
+educational settings, distributive fairness related to workload and rewards is a key predictor of
+teacher satisfaction [89]. Given these findings across various fields, an important question arises:
+does the observed link between fairness and job satisfaction apply in the context of SE?
+In the SE literature, enhanced job satisfaction among developers is known to improve employee
+attraction, retention, and well-being [43]. Furthermore, many researchers and companies assume
+thatmoresatisfieddeveloperstendtobemoreproductive[115].Storeyetal.[115]developedatheory
+that links higher job satisfaction among software developers to increased perceived productivity.
+In their study, they also identified various social and technical factors that significantly impact job
+satisfaction, such as appreciation and rewards, work culture, and work–life balance.
+Building on this work, our study aims to explore the perception of fairness as a critical factor
+influencing developer job satisfaction. Based on prior organizational behavior research, we theorize
+that fairness perceptions influence job satisfaction. The meta-analytic review by Colquitt et al.
+[31] found that perceptions of distributive, procedural, interpersonal, and informational fairness
+each significantly ||| experiences across SE scenarios feflect a single construct.
+CFA was subsequently performed to confirm these structures. The fairness perceptions model
+showed good fit (Comparative Fit Index(CFI) = 0.921, TLI = 0.909, RMSEA = 0.076, Standard-
+ized Root Mean Squared Residual (SRMR) = 0.076), supporting Colquitt’s 4D framework.
+The job satisfaction model demonstrated acceptable fit (CFI = 0.857, TLI = 0.830, RMSEA = 0.101,
+SRMR = 0.082), reflecting the exploratory nature of adapting the factors by Storey et al. The fair-
+ness contexts model confirmed the unidimensional structure with strong fit indices (CFI = 0.919,
+TLI = 0.896, RMSEA = 0.087, SRMR = 0.061).
+Across all constructs, item-level standardized factor loadings were generally high, ranging from
+0.52 to 0.97 for fairness perceptions, 0.49 to 0.87 for job satisfaction, and 0.41 to 0.78 for fairness
+contexts. These factor loadings indicate that individual items contributed meaningfully to their
+respective latent constructs.
+Finally, to assess internal consistency, we applied the Omega reliability coefficient, which is
+particularly suited for multidimensional constructs and provides a more accurate estimate of
+reliability than Cronbach’s alpha when factor loadings vary [85]. The Omega values were strong
+across all constructs, with 0.94 for fairness perceptions, 0.93 for job satisfaction, and 0.89 for
+fairness contexts. These results indicate a high level of reliability, which confirm that the variance
+in responses is largely attributable to consistent underlying constructs. Notably, Omega values
+remained stable before and after multiple imputation, which demonstrate that our handling of
+missing data did not compromise reliability. After pre-processing, we retained 108 responses for
+analysis.
+As mentioned in Section 4.1.5, we employed purposive sampling focused on recruiting software
+practitioners from diverse backgrounds to align our sampling strategy with our study’s exploratory
+",Pass
+A,6,"Which sampling technique did the authors use to recruit respondents, and through which channels?","Purposive sampling; LinkedIn, social media, and professional events",11,sentence-transformers/all-MiniLM-L6-v2,256,50,8,7.85,1682.05,1689.9,2064,2167,26,0.01062544017,The authors used purposive sampling to recruit software practitioners from diverse backgrounds. They utilized recruitment channels such as LinkedIn and SE workshops.," producing population-level estimates. As Baltes and Ralph emphasize in their critical
+review of sampling in SE research, “there is no universally correct sample size,” and what matters
+is how well the sampling strategy supports the intended claims of a study [10]. They further argue
+that when a study aims to explore social or organizational constructs, diversity of experience and
+transparent reporting are often more meaningful than statistical representativeness. Following
+these recommendations, we prioritized recruiting participants across a range of demographics and
+clearly report our sampling limitations to avoid overgeneralization.
+ACM Transactions on Software Engineering and Methodology, Vol. 35, No. 5, Article 137. Publication date: April 2026.
+137:14 E. Sesari et al.
+4.3 Summarizing Responses
+To summarize the responses, we employed various data analysis techniques. First, we calculated
+descriptive statistics for each survey item to help us understand trends in the responses. We then
+visualized these responses using box plots and bar charts to provide a clear data distribution. Box
+plotshelpedidentifyoutliersandthespreadofresponses,whilebarchartsmadeiteasiertocompare
+response frequencies across items ||| 37. Publication date: April 2026.
+137:12 E. Sesari et al.
+Details about data storage, anonymity, and the handling of sensitive information were provided
+in the Participant Information Sheet, which is included in the Supplementary Materials [1]. The
+informed consent form is also available.
+4.2 Pre-Processing and Assessing Survey Data Quality
+The survey was made available on 2 January 2024 and remained open for 2 months. During this
+period, the survey system recorded a total of 111 responses. All respondents provided their consent
+and responded to the questions.
+We began by cleaning the responses, removing those who were not software practitioners.
+Respondents who selected “other” for their profession but did not specify were labeled as “prefer
+not to say.”
+Weimplementedresponsetimeanalysisasaproxyfordetectinginattentiveorcarelessresponses,
+consistent with recommendations in the survey methodology literature [101]. Responses completed
+in less than 1 minute were flagged as likely inattentive. While explicit attention-check questions
+are common in some survey designs, we chose not to include them to maintain engagement and
+trust among respondents. Prior ||| 566–576. DOI: https://doi.org/10.1108/08858620810913371
+[39] Cristel DeRouvray and M. Couper. 2002. Designing a strategy for reducing “No opinion” responses in Web-Based
+surveys. Social Science Computer Review 20 (2002), 3–9. DOI: https://doi.org/10.1177/089443930202000101
+[40] MortonDeutsch.1975.Equity,equality,andneed:Whatdetermineswhichvaluewillbeusedasthebasisofdistributive
+justice? Journal of Social Issues 31, 3 (1975), 137–149. DOI: https://doi.org/10.1111/j.1540-4560.1975.tb01000.x
+[41] Tessa L. Dover, Cheryl R. Kaiser, and B. Major.  |||  reached those most likely to provide
+valuable responses. We also promoted the survey in person during a workshop presentation given
+by the third author. At the workshop, we talked to attendees about the survey and handed out
+flyers with the survey link, allowing us to engage directly with software practitioners who were
+interested in our study. Geographically, most of our contacts reside in Europe and Asia.
+4.1.6 Ethical Considerations. This study was approved by the relevant ethics committees at the
+authors’ institutions under approval numbers 97126442 and UCL/CSREC/R/40. All participants
+were informed of the purpose of the study, their rights, and the handling of their data through a
+participant information sheet and informed consent form, both of which were presented before
+the survey began. Participants provided their explicit consent before proceeding with the survey.
+ACM Transactions on Software Engineering and Methodology, Vol. 35, No. 5, Article 137. Publication date: April 2026.
+137:12 E. Sesari et al.
+Details about data storage, anonymity, and the handling of sensitive information were provided
+in the Participant Information Sheet, which is |||  how work performance or contributions are assessed.
+—Authorship: fairness in how credit is assigned for contributions to code, design, or other
+outputs.
+—Policy: fairness in organizational policies or rules that affect practitioners’ work.
+—Customer/client relations: fairness in interactions between practitioners (or their organiza-
+tions) and external stakeholders such as clients or customers.
+4.1.4 Collecting Demographic Information. Inoursurveydesign,weincludedaseriesofquestions
+aimed at collecting demographic information from respondents, such as gender, age, ethnicity, work
+experience, and role within the organization. The inclusion of these variables allows us to perform
+subgroup analyses, uncovering potential differences in job satisfaction across diverse demographic
+groups and enabling the development of fairness-related strategies tailored to each group.
+To ensure respondent comfort and privacy, all demographic questions were accompanied by
+a “prefer not to say” option. This approach encourages honest participation while respecting
+individuals’ boundaries [65]. The specific demographic categories included in our survey are as
+follows:
+Gender: Male, Female. Given the historical gender biases in the SE field, particularly in areas like
+hiring and promotion [130], we anticipate that gender may play a significant role in shaping ||| 
+reliability than Cronbach’s alpha when factor loadings vary [85]. The Omega values were strong
+across all constructs, with 0.94 for fairness perceptions, 0.93 for job satisfaction, and 0.89 for
+fairness contexts. These results indicate a high level of reliability, which confirm that the variance
+in responses is largely attributable to consistent underlying constructs. Notably, Omega values
+remained stable before and after multiple imputation, which demonstrate that our handling of
+missing data did not compromise reliability. After pre-processing, we retained 108 responses for
+analysis.
+As mentioned in Section 4.1.5, we employed purposive sampling focused on recruiting software
+practitioners from diverse backgrounds to align our sampling strategy with our study’s exploratory
+goals. While our final sample includes 108 respondents, this size is appropriate for our research
+objective: examining theorized relationships between fairness perceptions and job satisfaction,
+rather than producing population-level estimates. As Baltes and Ralph emphasize in their critical
+review of sampling in SE research, “there is no universally correct sample size,” and what matters
+is how well the sampling strategy supports the intended claims of a study [1 ||| , which may be
+subject to biases such as social desirability or recall bias. While we mitigated some of these risks by
+ensuring anonymity and using validated survey instruments, we recognize that participants may
+still over- or under-report certain experiences. Future studies could strengthen construct validity
+by combining self-reported data with qualitative methods such as interviews or focus groups to
+triangulate findings and provide deeper insights.
+Another construct-related concern is whether all respondents were legitimate software practi-
+tioners. Since the survey was anonymous and not linked to participants’ online profiles, we could
+not verify professional identity. However, given the absence of monetary incentives, and the use of
+recruitment channels (e.g., LinkedIn, SE workshops), we consider the risk of identity falsification
+to be minimal. Respondents had no clear motivation to misrepresent their role, and the targeted
+nature of our outreach makes it unlikely that the survey reached individuals without relevant SE
+experience.
+In addition, we considered the practical significance of the relationships between fairness and
+job satisfaction, beyond just statistical significance in the ordinal regression analysis. To ad-
+dress this, we calculated percentage-based OR as effect sizes and only focused on relationships
+with an OR of 50% or more. This ||| 1–10. DOI: https://doi.org/10.1109/ESEM.2015.7321212
+[101] Blair Read, Lukas Wolters, and Adam J. Berinsky. 2022. Racing the clock: Using response time as a proxy for
+attentiveness on self-administered surveys. Political Analysis 30, 4 (2022), 550–569.
+ACM Transactions on Software Engineering and Methodology, Vol. 35, No. 5, Article 137. Publication date: April 2026.
+137:42 E. Sesari et al.
+[102] Hana Řezanková and Richard Novák. 2019. Effect of ordinal variable transformations on hierarchical clustering
+results: A case study on the big data phenomenon. In 22nd International Scientific Conference on Applications of
+Mathematics and Statistics in Economics (AMSE ’19). Atlantis Press, 81–90.
+[103] Ariel Rodriguez, Fumiya Tanaka, and Yasutaka Kamei",Fail
+B,6,"Which sampling technique did the authors use to recruit respondents, and through which channels?","Purposive sampling; LinkedIn, social media, and professional events",11,BAAI/bge-small-en-v1.5,512,50,3,11.97,1431.01,1442.98,1552,1622,24,0.009240568272,"The authors used purposive sampling to recruit respondents. They reached out via LinkedIn, social media, and professional events."," retained 108 responses for
+analysis.
+As mentioned in Section 4.1.5, we employed purposive sampling focused on recruiting software
+practitioners from diverse backgrounds to align our sampling strategy with our study’s exploratory
+goals. While our final sample includes 108 respondents, this size is appropriate for our research
+objective: examining theorized relationships between fairness perceptions and job satisfaction,
+rather than producing population-level estimates. As Baltes and Ralph emphasize in their critical
+review of sampling in SE research, “there is no universally correct sample size,” and what matters
+is how well the sampling strategy supports the intended claims of a study [10]. They further argue
+that when a study aims to explore social or organizational constructs, diversity of experience and
+transparent reporting are often more meaningful than statistical representativeness. Following
+these recommendations, we prioritized recruiting participants across a range of demographics and
+clearly report our sampling limitations to avoid overgeneralization.
+ACM Transactions on Software Engineering and Methodology, Vol. 35, No. 5, Article 137. Publication date: April 2026.
+137:14 E. Sesari et al.
+4.3 Summarizing Responses
+To summarize the responses, we employed various data analysis techniques. First, we calculated
+descriptive statistics for each survey item to help us understand trends in the responses. We then
+visualized these responses using box plots and bar charts to provide a clear data distribution. Box
+plotshelpedidentifyoutliersandthespreadofresponses,whilebarchartsmadeiteasiertocompare
+response frequencies across items.
+For the Likert responses to the 20-item fairness scale, analyzing individual items allows us to
+identify specific aspects of fairness that may need prioritization. However, to understand general
+trends across the four fairness dimensions, Enoksen [42] recommended aggregating the Likert
+responses by calculating the mean for each dimension. For example, we calculated the mean of
+the four items related to distributive fairness to create an aggregated descriptive statistic for this
+dimension.
+To examine demographic differences in the three perceptions, we used the Mann–Whitney
+U [82] and Kruskal–Wallis [71] tests, along with wilcoxon_effsize [121] in R for effect size.
+We focused on moderate (0.30−<0.5) and large effect sizes ||| 0. All participants
+were informed of the purpose of the study, their rights, and the handling of their data through a
+participant information sheet and informed consent form, both of which were presented before
+the survey began. Participants provided their explicit consent before proceeding with the survey.
+ACM Transactions on Software Engineering and Methodology, Vol. 35, No. 5, Article 137. Publication date: April 2026.
+137:12 E. Sesari et al.
+Details about data storage, anonymity, and the handling of sensitive information were provided
+in the Participant Information Sheet, which is included in the Supplementary Materials [1]. The
+informed consent form is also available.
+4.2 Pre-Processing and Assessing Survey Data Quality
+The survey was made available on 2 January 2024 and remained open for 2 months. During this
+period, the survey system recorded a total of 111 responses. All respondents provided their consent
+and responded to the questions.
+We began by cleaning the responses, removing those who were not software practitioners.
+Respondents who selected “other” for their profession but did not specify were labeled as “prefer
+not to say.”
+Weimplementedresponsetimeanalysisasaproxyfordetectinginattentiveorcarelessresponses,
+consistent with recommendations in the survey methodology literature [101]. Responses completed
+in less than 1 minute were flagged as likely inattentive. While explicit attention-check questions
+are common in some survey designs, we chose not to include them to maintain engagement and
+trust among respondents. Prior research indicates that experienced participants may recognize
+such checks, potentially reducing their effectiveness and introducing bias [5, 99].
+We established a threshold to detect outliers, focusing on extremely short response times, such
+as responses completed in less than 1 minute. Using the Interquartile Range (IQR) method, we
+identified responses with durations in the first quartile as potential outliers. The shortest response
+time was 0.6 minutes, which we deemed too short to yield meaningful data given the expected 10-
+minute duration. Research supports that very quick survey completions can indicate less attentive
+responses [136]. On reviewing the 0.6-minute response, we found missing answers in key areas,
+reinforcing concerns about data quality for very fast responses. We also examined responses with
+durationsbeyondthethirdqu |||  [88]. This might suggest that those with work
+limitations report lower job satisfaction compared to those without such limitations. The questions
+used in the survey are based on the National Health Interview Survey (NHIS) [6].
+4.1.5 Respondent Recruitment. To understand how fairness relates to job satisfaction among
+softwarepractitionersandhowthisrelationshipvariesacrossdemographicgroups,itwasimportant
+to recruit individuals with experience in the software industry from diverse backgrounds. We
+employed several strategies to reach these participants.
+We applied purposive sampling [10], recruiting respondents who are professional software
+practitioners via LinkedIn, social media, and professional events. This approach enabled us to
+reach individuals likely to provide relevant insight into fairness and job satisfaction in software
+development contexts. Following the classification of Baltes and Ralph [10], our sampling strategy
+corresponds to a form of convenience sampling with elements of expert sampling, as we selectively
+targeted working professionals in SE through professional networks and domain-relevant channels.
+First, we leveraged our professional networks, which include many individuals with substantial
+experience in SE. We used LinkedIn, a platform designed for professional networking, to connect
+with these potential respondents. We began by creating a LinkedIn article that explained the
+purpose and importance of our survey and included a link for easy participation. To broaden our
+reach beyond our immediate networks, we also shared the LinkedIn article on other social media
+platforms like Facebook, Instagram, and Twitter (X).
+In addition to this online outreach, we directly sent the LinkedIn article to professional contacts
+who work in software development, ensuring that the survey reached those most likely to provide
+valuable responses. We also promoted the survey in person during a workshop presentation given
+by the third author. At the workshop, we talked to attendees about the survey and handed out
+flyers with the survey link, allowing us to engage directly with software practitioners who were
+interested in our study. Geographically, most of our contacts reside in Europe and Asia.
+4.1.6 Ethical Considerations. This study was approved by the relevant ethics committees at the
+authors’ institutions under approval numbers 97126442 and UCL/CSREC/R/40. All participants
+were informed of the purpose of the study, their rights, and the handling of their data through a
+participant information sheet and informed consent form, both of which were presented before
+the survey began. Participants provided their explicit consent",Pass
+A,7,Which R package was used for the ordinal logistic regression?,MASS,17,sentence-transformers/all-MiniLM-L6-v2,256,50,8,14.21,922.16,936.37,2059,2161,6,0.006694237025,Not found in the document,"4.5.1 Ordinal Logistic Regression Analysis. After establishing the job satisfaction clusters, we
+aimedtounderstandhowfairnessperceptionorfairnesscontextsareassociatedwiththeprobability
+of job satisfaction being in a higher or lower category. To achieve this, we performed an ordinal
+logistic regression analysis. We performed an ordinal logistic regression analysis to explore the
+relationshipsbetweensurveyitems,specificallyaddressingRQ1andRQ3.Ordinallogisticregression
+predicts the probability of an observation falling into one of several ordered categories, making it
+ideal for analyzing outcomes like job satisfaction levels [4].
+For example, when analyzing job satisfaction levels among software engineers, ordinal logistic
+regression helps us understand how perceptions of fairness are related to these levels. If job
+satisfaction is categorized from “very dissatisfied” to “very satisfied,” a positive and significant
+coefficient for perceptions of fairness would indicate that as the perception of fairness increases,
+the likelihood of a respondent falling into a higher job satisfaction category also increases. In other
+ACM Transactions on Software Engineering and Methodology, Vol. 35, No. 5, Article 137. Publication date: April 2026.
+ ||| .
+Table 7. Ordinal Regression Analysis Result
+ALL RWB SEC MNG CLT PRF COM
+Perception of Fairness
+D1: Outcome is justified by the performance + + +
+D2: Outcome is appropriate for the completed work + + + +
+D3: Outcome reflecting contribution +
+D4: Outcome reflecting effort + + + +
+P1: Ethical and moral processes + + +
+P2: Voicing opinions + +
+P3: Accurate information + + + +
+P4: Free of bias processes + +
+P5: Have a say in making decisions +
+P6: Consistency in applying processes + +
+P7: Appealing decisions +
+Int1: Treated politely + + +
+Int2: Treated with respect + + +
+Int3: Treated with dignity + + +
+Int4: No inappropriate comments or behavior +
+Inf1: Direct communication
+Inf2: Reasonable explanations + +
+Inf3: Timely communication +
+Inf4: Tailored communication +
+Inf5: Comprehensive explanations +
+SE Context
+C1: Customer/Client Relations
+C2: Recruitment
+C3: Treatment
+C4: Policy + +
+C5: Evaluation + +
+C6: Working Hours +
+C7: Allocation of Work + + |||  Multiple imputation by chained equations in praxis: Guidelines and review.
+The Electronic Journal of Business Research Methods 15 (2017), 41–56.
+[140] Murat Yilmaz, Rory V. O’Connor, and Paul M. Clarke. 2012. A systematic approach to the comparison of roles in
+the software development processes. In International Conference on Software Process Improvement and Capability
+Determination. Springer, 198–209. DOI: https://doi.org/10.1007/978-3-642-30439-2_18
+[141] Jean-Gabriel Young, Amanda Casari, Katie McLaughlin, Milo Z. Trujillo, Laurent H’ebert-Dufresne, and
+James P. Bagrow. 2021. Which contributions count? Analysis of attribution in open source. In 2021 IEEE/ACM 18th
+International Conference on Mining Software Repositories (MSR), 242–253. DOI: https://doi.org/10.1109/MSR |||  April 2026.
+Fairness Matters for Software Practitioners 137:15
+Fig. 2. Dendrogram of clustering job satisfaction factors into groups.
+method. The Spearman correlation method is suitable for ordinal data, like Likert-scale responses,
+because it assesses how well the relationship between two variables can be described by a mono-
+tonic function [135]. For example, if the satisfaction scores for feedback and appreciation are highly
+correlated, it suggests that respondents who rate feedback highly also tend to rate appreciation
+highly.
+After establishing the relationships between factors through correlation analysis, we computed
+the dissimilarity matrix using the Manhattan distance, which is appropriate for ordinal data.
+Compared to the Euclidean distance, the Manhattan distance provides a more robust measure
+when dealing with ordinal or non-normally distributed variables, as it does not assume interval-
+scaleddataorlinearrelationships[102].TheManhattandistancemeasurestheabsolutedifferences
+between the pairwise correlation coefficients, summing these differences across all pairs [131].
+This method helps to quantify how dissimilar each pair of job satisfaction factors is based on their
+correlationvalues[131].For ||| 1–10. DOI: https://doi.org/10.1109/ESEM.2015.7321212
+[101] Blair Read, Lukas Wolters, and Adam J. Berinsky. 2022. Racing the clock: Using response time as a proxy for
+attentiveness on self-administered surveys. Political Analysis 30, 4 (2022), 550–569.
+ACM Transactions on Software Engineering and Methodology, Vol. 35, No. 5, Article 137. Publication date: April 2026.
+137:42 E. Sesari et al.
+[102] Hana Řezanková and Richard Novák. 2019. Effect of ordinal variable transformations on hierarchical clustering
+results: A case study on the big data phenomenon. In 22nd International Scientific Conference on Applications of
+Mathematics and Statistics in Economics (AMSE ’19). Atlantis Press, 81–90.
+[103] Ariel Rodriguez, Fumiya Tanaka, and Yasutaka Kamei |||  groups with a correlation of 2.7
+or more. This threshold allowed us to group the 16 job satisfaction aspects into six distinct clusters
+(i.e., Composite Factors (CFs)).
+Additionally, we made a slight adjustment by separating the overall satisfaction factor from CF3,
+treating it as a distinct CF. This adjustment led to a final set of seven CFs, as shown in Table 4. For
+example, satisfaction with benefits and salary was highly correlated, so we combined these factors
+into the CF compensation. When combining factors, we averaged their scores; for instance, if the
+satisfaction scores for benefits and salary were 3 and 4, respectively, the score for compensation
+would be (3 + 4)/2 = 3.5.
+By grouping similar job satisfaction factors into cohesive units, we can better understand how
+different aspects of job satisfaction are interrelated, leading to more targeted and effective strategies
+for enhancing job satisfaction among software practitioners.
+4.5 Statistical Analysis
+4.5.1 Ordinal Logistic Regression Analysis. After establishing the job satisfaction clusters, we
+aimedtounderstandhowfairnessperceptionorfairnesscontextsareassociatedwiththeprobability
+of job satisfaction being in a higher or ||| 019. Implicit gender biases in professional software development: An empirical study.
+In 2019 IEEE/ACM 41st International Conference on Software Engineering: Software Engineering in Society (ICSE-SEIS),
+1–10. DOI: https://doi.org/10.1109/ICSE-SEIS.2019.00009
+[131] C. Weiß. 2019. Distance-based analysis of ordinal data and ordinal time series. Journal of the American Statistical
+Association 115, 531 (2019), 1189–1200. DOI: https://doi.org/10.1080/01621459.2019.1604370
+[132] Mark A. Wesolowski and Kevin W. Mossholder. 1997. Relational demography in supervisor–subordinate dyads:
+Impact on subordinate job satisfaction, burnout, and perceived procedural justice. Journal of Organizational Behavior
+18, 4 (1997), 351–36 |||  0.101,
+SRMR = 0.082), reflecting the exploratory nature of adapting the factors by Storey et al. The fair-
+ness contexts model confirmed the unidimensional structure with strong fit indices (CFI = 0.919,
+TLI = 0.896, RMSEA = 0.087, SRMR = 0.061).
+Across all constructs, item-level standardized factor loadings were generally high, ranging from
+0.52 to 0.97 for fairness perceptions, 0.49 to 0.87 for job satisfaction, and 0.41 to 0.78 for fairness
+contexts. These factor loadings indicate that individual items contributed meaningfully to their
+respective latent constructs.
+Finally, to assess internal consistency, we applied the Omega reliability coefficient, which is
+particularly suited for multidimensional constructs and provides a more accurate estimate of
+reliability than Cronbach’s alpha when factor loadings vary [85]. The Omega values were strong
+across all constructs, with 0.94 for fairness perceptions, 0.93 for job satisfaction, and ",Fail
+B,7,Which R package was used for the ordinal logistic regression?,MASS,17,BAAI/bge-small-en-v1.5,512,50,3,14.8,675.5,690.31,1547,1617,6,0.004541529098,Not found in the document," their scores; for instance, if the
+satisfaction scores for benefits and salary were 3 and 4, respectively, the score for compensation
+would be (3 + 4)/2 = 3.5.
+By grouping similar job satisfaction factors into cohesive units, we can better understand how
+different aspects of job satisfaction are interrelated, leading to more targeted and effective strategies
+for enhancing job satisfaction among software practitioners.
+4.5 Statistical Analysis
+4.5.1 Ordinal Logistic Regression Analysis. After establishing the job satisfaction clusters, we
+aimedtounderstandhowfairnessperceptionorfairnesscontextsareassociatedwiththeprobability
+of job satisfaction being in a higher or lower category. To achieve this, we performed an ordinal
+logistic regression analysis. We performed an ordinal logistic regression analysis to explore the
+relationshipsbetweensurveyitems,specificallyaddressingRQ1andRQ3.Ordinallogisticregression
+predicts the probability of an observation falling into one of several ordered categories, making it
+ideal for analyzing outcomes like job satisfaction levels [4].
+For example, when analyzing job satisfaction levels among software engineers, ordinal logistic
+regression helps us understand how perceptions of fairness are related to these levels. If job
+satisfaction is categorized from “very dissatisfied” to “very satisfied,” a positive and significant
+coefficient for perceptions of fairness would indicate that as the perception of fairness increases,
+the likelihood of a respondent falling into a higher job satisfaction category also increases. In other
+ACM Transactions on Software Engineering and Methodology, Vol. 35, No. 5, Article 137. Publication date: April 2026.
+Fairness Matters for Software Practitioners 137:17
+words, as perceptions of fairness improve, the odds of a software engineer being more satisfied
+increase.
+To address RQ1, we applied this analysis to examine the relationship between perceptions
+of fairness and the seven job satisfaction clusters. For instance, if a practitioner perceives high
+levels of distributive fairness, the ordinal logistic regression might predict a higher likelihood of
+reporting increased satisfaction in clusters related to compensation (COM). This suggests that
+perceptions of fair distribution of resources and rewards are linked to how satisfied practitioners
+feel with their compensation. For RQ3, we aimed to translate the broader understanding of fairness
+perceptions into actionable strategies by examining how specific fairness perceptions relate to job
+satisfaction within various SE contexts. To |||  Approximation (RMSEA) = 0.059, Tucker-Lewis Index (TLI) = 0.937, Root Mean
+Square Residual (RMSR) = 0.04), with items loading cleanly onto their respective factors and
+ACM Transactions on Software Engineering and Methodology, Vol. 35, No. 5, Article 137. Publication date: April 2026.
+Fairness Matters for Software Practitioners 137:13
+Table 3. Model Fit, Factor Loadings, and Reliability by Construct
+Analysis Metric Fairness Perception Job Satisfaction Fairness Context in SE
+EFA
+RMSEA 0.06 0.08 0.08
+TLI 0.94 0.87 0.90
+RMSR 0.04 0.05 0.07
+CFA
+CFI 0.92 0.86 0.92
+TLI 0.91 0.83 0.90
+RMSEA 0.08 0.10 0.09
+SRMR 0.08 0.08 0.06
+Factor Loadings (range) 0.52–0.97 0.49–0.87 0.41–0.78
+Omega Reliability 0.94 0.93 0.89
+minimal cross-loadings. For job satisfaction (16 items), EFA revealed acceptable fit (RMSEA = 0.082,
+TLI = 0.873, RMSR = 0.05), consistent with conceptual groupings adapted from Storey et al. [115].
+For fairness contexts (10 items), parallel analysis suggested a unidimensional structure, which was
+supported by good fit indices (RMSEA = 0.081, TLI = 0.903, RMSR = 0.07), indicating that fairness
+experiences across SE scenarios feflect a single construct.
+CFA was subsequently performed to confirm these structures. The fairness perceptions model
+showed good fit (Comparative Fit Index(CFI) = 0.921, TLI |||  retained 108 responses for
+analysis.
+As mentioned in Section 4.1.5, we employed purposive sampling focused on recruiting software
+practitioners from diverse backgrounds to align our sampling strategy with our study’s exploratory
+goals. While our final sample includes 108 respondents, this size is appropriate for our research
+objective: examining theorized relationships between fairness perceptions and job satisfaction,
+rather than producing population-level estimates. As Baltes and Ralph emphasize in their critical
+review of sampling in SE research, “there is no universally correct sample size,” and what matters
+is how well the sampling strategy supports the intended claims of a study [10]. They further argue
+that when a study aims to explore social or organizational constructs, diversity of experience and
+transparent reporting are often more meaningful than statistical representativeness. Following
+these recommendations, we prioritized recruiting participants across a range of demographics and
+clearly report our sampling limitations to avoid overgeneralization.
+ACM Transactions on Software Engineering and Methodology, Vol. 35, No. 5, Article 137. Publication date: April 2026.
+137:14 E. Sesari et al.
+4.3 Summarizing Responses
+To summarize the responses, we employed various data analysis techniques. First, we calculated
+descriptive statistics for each survey item to help us understand trends in the responses. We then
+visualized these responses using box plots and bar charts to provide a clear data distribution. Box
+plotshelpedidentifyoutliersandthespreadofresponses,whilebarchartsmadeiteasiertocompare
+response frequencies across items.
+For the Likert responses to the 20-item fairness scale, analyzing individual items allows us to
+identify specific aspects of fairness that may need prioritization. However, to understand general
+trends across the four fairness dimensions, Enoksen [42] recommended aggregating the Likert
+responses by calculating the mean for each dimension. For example, we calculated the mean of
+the four items related to distributive fairness to create an aggregated descriptive statistic for this
+dimension.
+To examine demographic differences in the three perceptions, we used the Mann–Whitney
+U [82] and Kruskal–Wallis [71] tests, along with wilcoxon_effsize [121] in R for effect size.
+We focused on moderate (0.30−<0.5) and large effect sizes",Fail
+A,8,Which linkage method was used for the hierarchical clustering of job satisfaction factors?,Average linkage,15,sentence-transformers/all-MiniLM-L6-v2,256,50,8,9.66,1511.19,1520.85,2062,2165,16,0.01053801092,The average linkage method was used for the hierarchical clustering of job satisfaction factors.,"olutedifferences
+between the pairwise correlation coefficients, summing these differences across all pairs [131].
+This method helps to quantify how dissimilar each pair of job satisfaction factors is based on their
+correlationvalues[131].For instance,alowvaluefor theManhattandistancebetween satisfaction
+with benefits and satisfaction with salary suggests that these factors are closely related in how
+respondents perceive them.
+Wethenperformedhierarchicalclusteringusingtheaveragelinkagemethod,implemented
+in R with the hclust() function [58, 73]. The average linkage method calculates the average
+distance between all pairs of factors in two clusters, merging the clusters with the smallest average
+distance first. This approach ensures that clusters are formed based on the overall similarity of their
+members, rather than just the closest or farthest points, which helps maintain balanced clusters.
+The result of the hierarchical clustering is visualized in a dendrogram (Figure 2), a tree-like
+diagram that illustrates how clusters are merged at different distance thresholds. For instance, if
+ACM Transactions on Software Engineering and Methodology, Vol. 35, No. 5, Article 137. Publication date: April  ||| diagram that illustrates how clusters are merged at different distance thresholds. For instance, if
+ACM Transactions on Software Engineering and Methodology, Vol. 35, No. 5, Article 137. Publication date: April 2026.
+137:16 E. Sesari et al.
+Table 4. Composite Factors of Practitioners’ Job Satisfaction
+Composite Factor Satisfaction Aspects
+Overall (ALL) Overall
+Rewards and Work–Life Balance (RWB)
+Rewards
+Work–Life Balance
+Promotion
+Job Security (SEC) Job Security
+Manager (MNG)
+Feedback
+Appreciation
+Manager
+Work Culture (CLT)
+Organization Culture
+Priority
+Team Culture
+Collaboration
+Performance (PRF) Productivity Ability
+Compensation (COM) Salary Benefits
+satisfaction with benefits and satisfaction with salary are closely related, they will be merged early
+in the dendrogram.
+To identify clusters that were highly correlated, we focused on groups with a correlation of 2.7
+or more. This threshold allowed us to group the 16 job satisfaction aspects into six distinct clusters
+(i.e., Composite Factors (CFs)).
+Additionally, we made a slight adjustment by separating the |||  and Software Tester/QA Engineer.
+4.4 Grouping Job Satisfaction Factors
+The goal of this step is to identify potential natural groupings or clusters among job satisfaction
+factors, which can help us treat related factors as cohesive units for more effective analysis. While
+thejobsatisfactionfactorsinourstudyaredesignedtobeindependenttoensurecleardifferentiation
+between the factors, it is possible that some factors receive similar reactions from respondents.
+This similarity suggests that there may be natural groupings or clusters among the factors, which
+might not be immediately obvious. For example, respondents might perceive satisfaction with
+appreciation and feedback as related, reflecting a common underlying sentiment.
+To uncover these natural groupings, we first checked for the independence of factors by calcu-
+lating the correlations between the satisfaction scores for each pair of factors using the Spearman
+ACM Transactions on Software Engineering and Methodology, Vol. 35, No. 5, Article 137. Publication date: April 2026.
+Fairness Matters for Software Practitioners 137:15
+Fig. 2. Dendrogram of clustering job satisfaction factors into groups.
+method. The Spearman correlation method is suitable for ordinal |||  groups with a correlation of 2.7
+or more. This threshold allowed us to group the 16 job satisfaction aspects into six distinct clusters
+(i.e., Composite Factors (CFs)).
+Additionally, we made a slight adjustment by separating the overall satisfaction factor from CF3,
+treating it as a distinct CF. This adjustment led to a final set of seven CFs, as shown in Table 4. For
+example, satisfaction with benefits and salary was highly correlated, so we combined these factors
+into the CF compensation. When combining factors, we averaged their scores; for instance, if the
+satisfaction scores for benefits and salary were 3 and 4, respectively, the score for compensation
+would be (3 + 4)/2 = 3.5.
+By grouping similar job satisfaction factors into cohesive units, we can better understand how
+different aspects of job satisfaction are interrelated, leading to more targeted and effective strategies
+for enhancing job satisfaction among software practitioners.
+4.5 Statistical Analysis
+4.5.1 Ordinal Logistic Regression Analysis. After establishing the job satisfaction clusters, we
+aimedtounderstandhowfairnessperceptionorfairnesscontextsareassociatedwiththeprobability
+of job satisfaction being in a higher or |||  April 2026.
+Fairness Matters for Software Practitioners 137:15
+Fig. 2. Dendrogram of clustering job satisfaction factors into groups.
+method. The Spearman correlation method is suitable for ordinal data, like Likert-scale responses,
+because it assesses how well the relationship between two variables can be described by a mono-
+tonic function [135]. For example, if the satisfaction scores for feedback and appreciation are highly
+correlated, it suggests that respondents who rate feedback highly also tend to rate appreciation
+highly.
+After establishing the relationships between factors through correlation analysis, we computed
+the dissimilarity matrix using the Manhattan distance, which is appropriate for ordinal data.
+Compared to the Euclidean distance, the Manhattan distance provides a more robust measure
+when dealing with ordinal or non-normally distributed variables, as it does not assume interval-
+scaleddataorlinearrelationships[102].TheManhattandistancemeasurestheabsolutedifferences
+between the pairwise correlation coefficients, summing these differences across all pairs [131].
+This method helps to quantify how dissimilar each pair of job satisfaction factors is based on their
+correlationvalues[131].For ||| , Vol. 35, No. 5, Article 137. Publication date: April 2026.
+137:40 E. Sesari et al.
+[58] G. Guénard and P. Legendre. 2022. Hierarchical clustering with contiguity constraint in r. Journal of Statistical
+Software 103, 7 (2022), 1-26. DOI: https://doi.org/10.18637/jss.v103.i07
+[59] J. Haar and C. Spell. 2009. How does distributive justice affect work attitudes? The moderating effects of auton-
+omy. The International Journal of Human Resource Management 20 (2009), 1827–1842. DOI: https://doi.org/10.1080/
+09585190903087248
+[60] Frances M. Hawes and Shuangshuang Wang. 2022. The impact of supervisor support on the job satisfaction of
+immigrant and |||  group differences while controlling for Type I errors. For example, if the Kruskal–Wallis
+test indicated a p-value less than 0.05 for satisfaction with benefits across different work experience
+levels, and the post hoc test found a significant difference between respondents with less than 1 year
+and more than 7 years of experience with an effect size of 0.6, it would suggest a large effect. Similar
+to the Mann–Whitney U test, we then reviewed visualizations to examine these differences, such
+as the percentage of respondents with less than 1 year of experience versus those with more than
+7 years reacting to satisfaction with benefits.
+For the demographic categories of ethnicity and role, even though they had more than two
+options, we focused on those with comparable numbers of respondents to avoid false positives.
+Specifically, for ethnicity, we considered only Asian and White respondents, and for role, we focused
+on Software Developer/Engineer and Software Tester/QA Engineer.
+4.4 Grouping Job Satisfaction Factors
+The goal of this step is to identify potential natural groupings or clusters among job satisfaction
+factors, which can help us treat related factors as cohesive units for more effective ||| 4.5.1 Ordinal Logistic Regression Analysis. After establishing the job satisfaction clusters, we
+aimedtounderstandhowfairnessperceptionorfairnesscontextsareassociatedwiththeprobability
+of job satisfaction being in a higher or lower category. To achieve this, we performed an ordinal
+logistic regression analysis. We performed an ordinal logistic regression analysis to explore the
+relationshipsbetweensurveyitems,specificallyaddressingRQ1andRQ3.Ordinallogisticregression
+predicts the probability of an observation falling into one of several ordered categories, making it
+ideal for analyzing outcomes like job satisfaction levels [4].
+For example, when analyzing job satisfaction levels among software engineers, ordinal logistic
+regression helps us understand how perceptions of fairness are related to these levels. If job
+satisfaction is categorized from “very dissatisfied” to “very satisfied,” a positive and significant
+coefficient for perceptions of fairness would indicate that as the perception of fairness increases,
+the likelihood of a respondent falling into a higher job satisfaction category also increases. In other
+ACM Transactions on Software Engineering and Methodology, Vol. 35, No. 5, Article 137. Publication date: April 2026.
+",Pass
+B,8,Which linkage method was used for the hierarchical clustering of job satisfaction factors?,Average linkage,15,BAAI/bge-small-en-v1.5,512,50,3,11.99,1076.9,1088.89,1550,1620,16,0.007053357903,The average linkage method was used for the hierarchical clustering of job satisfaction factors.,"with benefits and satisfaction with salary suggests that these factors are closely related in how
+respondents perceive them.
+Wethenperformedhierarchicalclusteringusingtheaveragelinkagemethod,implemented
+in R with the hclust() function [58, 73]. The average linkage method calculates the average
+distance between all pairs of factors in two clusters, merging the clusters with the smallest average
+distance first. This approach ensures that clusters are formed based on the overall similarity of their
+members, rather than just the closest or farthest points, which helps maintain balanced clusters.
+The result of the hierarchical clustering is visualized in a dendrogram (Figure 2), a tree-like
+diagram that illustrates how clusters are merged at different distance thresholds. For instance, if
+ACM Transactions on Software Engineering and Methodology, Vol. 35, No. 5, Article 137. Publication date: April 2026.
+137:16 E. Sesari et al.
+Table 4. Composite Factors of Practitioners’ Job Satisfaction
+Composite Factor Satisfaction Aspects
+Overall (ALL) Overall
+Rewards and Work–Life Balance (RWB)
+Rewards
+Work–Life Balance
+Promotion
+Job Security (SEC) Job Security
+Manager (MNG)
+Feedback
+Appreciation
+Manager
+Work Culture (CLT)
+Organization Culture
+Priority
+Team Culture
+Collaboration
+Performance (PRF) Productivity Ability
+Compensation (COM) Salary Benefits
+satisfaction with benefits and satisfaction with salary are closely related, they will be merged early
+in the dendrogram.
+To identify clusters that were highly correlated, we focused on groups with a correlation of 2.7
+or more. This threshold allowed us to group the 16 job satisfaction aspects into six distinct clusters
+(i.e., Composite Factors (CFs)).
+Additionally, we made a slight adjustment by separating the overall satisfaction factor from CF3,
+treating it as a distinct CF. This adjustment led to a final set of seven CFs, as shown in Table 4. For
+example, satisfaction with benefits and salary was highly correlated, so we combined these factors
+into the CF compensation. When combining factors, we averaged their scores; for instance, if the
+satisfaction scores for benefits and salary were 3 and 4, respectively, the score for compensation
+would be (3 + 4)/2 = 3.5.
+By grouping similar job satisfaction |||  Factors
+The goal of this step is to identify potential natural groupings or clusters among job satisfaction
+factors, which can help us treat related factors as cohesive units for more effective analysis. While
+thejobsatisfactionfactorsinourstudyaredesignedtobeindependenttoensurecleardifferentiation
+between the factors, it is possible that some factors receive similar reactions from respondents.
+This similarity suggests that there may be natural groupings or clusters among the factors, which
+might not be immediately obvious. For example, respondents might perceive satisfaction with
+appreciation and feedback as related, reflecting a common underlying sentiment.
+To uncover these natural groupings, we first checked for the independence of factors by calcu-
+lating the correlations between the satisfaction scores for each pair of factors using the Spearman
+ACM Transactions on Software Engineering and Methodology, Vol. 35, No. 5, Article 137. Publication date: April 2026.
+Fairness Matters for Software Practitioners 137:15
+Fig. 2. Dendrogram of clustering job satisfaction factors into groups.
+method. The Spearman correlation method is suitable for ordinal data, like Likert-scale responses,
+because it assesses how well the relationship between two variables can be described by a mono-
+tonic function [135]. For example, if the satisfaction scores for feedback and appreciation are highly
+correlated, it suggests that respondents who rate feedback highly also tend to rate appreciation
+highly.
+After establishing the relationships between factors through correlation analysis, we computed
+the dissimilarity matrix using the Manhattan distance, which is appropriate for ordinal data.
+Compared to the Euclidean distance, the Manhattan distance provides a more robust measure
+when dealing with ordinal or non-normally distributed variables, as it does not assume interval-
+scaleddataorlinearrelationships[102].TheManhattandistancemeasurestheabsolutedifferences
+between the pairwise correlation coefficients, summing these differences across all pairs [131].
+This method helps to quantify how dissimilar each pair of job satisfaction factors is based on their
+correlationvalues[131].For instance,alowvaluefor theManhattandistancebetween satisfaction
+with benefits and satisfaction with salary suggests that these factors are closely related in how
+respondents perceive them.
+Wethenperformedhierarchicalclusteringusingtheaveragelinkagemethod,implemented
+in R with the hclust() function |||  are linked to how satisfied practitioners
+feel with their compensation. For RQ3, we aimed to translate the broader understanding of fairness
+perceptions into actionable strategies by examining how specific fairness perceptions relate to job
+satisfaction within various SE contexts. To do this, we applied a similar analysis to the one used
+for RQ1, focusing on the relationship between fairness experiences and job satisfaction in specific
+scenarios.
+This analysis was conducted using the MASS package in R. Additionally, we calculated Odds
+Ratios (OR) to quantify the strength of the associations, providing a clear measure of the effect
+size for each predictor variable.
+4.5.2 Moderation Analysis. Afterperformingtheordinallogisticregressionanalysis,weexplored
+howtheobservedrelationshipsdifferacrossdemographicgroupsbyemployingmoderationanalysis
+throughRQ2andRQ3.1.Moderationanalysistestswhetheravariable,suchasademographicfactor,
+influences the direction and/or strength of the relationship between an independent variable (e.g.,
+perception of fairness) and a dependent variable (e.g., job satisfaction) [13]. For example, suppose
+we find that perceptions of procedural fairness are positively associated with job satisfaction.
+A moderation analysis might examine whether this relationship is stronger for women than
+for men.
+In moderation analysis, the effect size can be positive or negative. A positive effect size indicates
+that the relationship between fairness perceptions and job satisfaction is stronger for the demo-
+graphic group being analyzed compared to the reference group, while a negative effect size suggests
+a weaker relationship. For example, in our analysis of ethnicity representation, the analysis used a
+diverse/balanced team as the reference group. A positive effect size for the underrepresented group
+indicates that the impact of fairness perceptions on job satisfaction is stronger for individuals in
+underrepresented teams compared to those in balanced teams.
+In our study, we specifically examined the potential moderating effects of various demographic
+factors, as described in Section 5.1. Due to the imbalance in the distribution of demographic
+categories among our respondents (as shown in Table 5), initially, we were only able to effectively
+analyze the moderating effects for three demographic groups: gender, ethnicity representation, and
+work limitation.Subsequently,wesimplifiedthecategoriesfortheremainingdemographicgroupsto
+improve the analysis. For instance, ethnicity was grouped into Asian and Non-Asian categories, and
+work experience was",Pass
+A,9,How many composite factors resulted from grouping the job satisfaction factors?,Seven,16,sentence-transformers/all-MiniLM-L6-v2,256,50,8,9.5,691.42,700.93,2060,2162,2,0.004647972956,seven," groups with a correlation of 2.7
+or more. This threshold allowed us to group the 16 job satisfaction aspects into six distinct clusters
+(i.e., Composite Factors (CFs)).
+Additionally, we made a slight adjustment by separating the overall satisfaction factor from CF3,
+treating it as a distinct CF. This adjustment led to a final set of seven CFs, as shown in Table 4. For
+example, satisfaction with benefits and salary was highly correlated, so we combined these factors
+into the CF compensation. When combining factors, we averaged their scores; for instance, if the
+satisfaction scores for benefits and salary were 3 and 4, respectively, the score for compensation
+would be (3 + 4)/2 = 3.5.
+By grouping similar job satisfaction factors into cohesive units, we can better understand how
+different aspects of job satisfaction are interrelated, leading to more targeted and effective strategies
+for enhancing job satisfaction among software practitioners.
+4.5 Statistical Analysis
+4.5.1 Ordinal Logistic Regression Analysis. After establishing the job satisfaction clusters, we
+aimedtounderstandhowfairnessperceptionorfairnesscontextsareassociatedwiththeprobability
+of job satisfaction being in a higher or |||  and Software Tester/QA Engineer.
+4.4 Grouping Job Satisfaction Factors
+The goal of this step is to identify potential natural groupings or clusters among job satisfaction
+factors, which can help us treat related factors as cohesive units for more effective analysis. While
+thejobsatisfactionfactorsinourstudyaredesignedtobeindependenttoensurecleardifferentiation
+between the factors, it is possible that some factors receive similar reactions from respondents.
+This similarity suggests that there may be natural groupings or clusters among the factors, which
+might not be immediately obvious. For example, respondents might perceive satisfaction with
+appreciation and feedback as related, reflecting a common underlying sentiment.
+To uncover these natural groupings, we first checked for the independence of factors by calcu-
+lating the correlations between the satisfaction scores for each pair of factors using the Spearman
+ACM Transactions on Software Engineering and Methodology, Vol. 35, No. 5, Article 137. Publication date: April 2026.
+Fairness Matters for Software Practitioners 137:15
+Fig. 2. Dendrogram of clustering job satisfaction factors into groups.
+method. The Spearman correlation method is suitable for ordinal ||| diagram that illustrates how clusters are merged at different distance thresholds. For instance, if
+ACM Transactions on Software Engineering and Methodology, Vol. 35, No. 5, Article 137. Publication date: April 2026.
+137:16 E. Sesari et al.
+Table 4. Composite Factors of Practitioners’ Job Satisfaction
+Composite Factor Satisfaction Aspects
+Overall (ALL) Overall
+Rewards and Work–Life Balance (RWB)
+Rewards
+Work–Life Balance
+Promotion
+Job Security (SEC) Job Security
+Manager (MNG)
+Feedback
+Appreciation
+Manager
+Work Culture (CLT)
+Organization Culture
+Priority
+Team Culture
+Collaboration
+Performance (PRF) Productivity Ability
+Compensation (COM) Salary Benefits
+satisfaction with benefits and satisfaction with salary are closely related, they will be merged early
+in the dendrogram.
+To identify clusters that were highly correlated, we focused on groups with a correlation of 2.7
+or more. This threshold allowed us to group the 16 job satisfaction aspects into six distinct clusters
+(i.e., Composite Factors (CFs)).
+Additionally, we made a slight adjustment by separating the |||  group differences while controlling for Type I errors. For example, if the Kruskal–Wallis
+test indicated a p-value less than 0.05 for satisfaction with benefits across different work experience
+levels, and the post hoc test found a significant difference between respondents with less than 1 year
+and more than 7 years of experience with an effect size of 0.6, it would suggest a large effect. Similar
+to the Mann–Whitney U test, we then reviewed visualizations to examine these differences, such
+as the percentage of respondents with less than 1 year of experience versus those with more than
+7 years reacting to satisfaction with benefits.
+For the demographic categories of ethnicity and role, even though they had more than two
+options, we focused on those with comparable numbers of respondents to avoid false positives.
+Specifically, for ethnicity, we considered only Asian and White respondents, and for role, we focused
+on Software Developer/Engineer and Software Tester/QA Engineer.
+4.4 Grouping Job Satisfaction Factors
+The goal of this step is to identify potential natural groupings or clusters among job satisfaction
+factors, which can help us treat related factors as cohesive units for more effective |||  0.101,
+SRMR = 0.082), reflecting the exploratory nature of adapting the factors by Storey et al. The fair-
+ness contexts model confirmed the unidimensional structure with strong fit indices (CFI = 0.919,
+TLI = 0.896, RMSEA = 0.087, SRMR = 0.061).
+Across all constructs, item-level standardized factor loadings were generally high, ranging from
+0.52 to 0.97 for fairness perceptions, 0.49 to 0.87 for job satisfaction, and 0.41 to 0.78 for fairness
+contexts. These factor loadings indicate that individual items contributed meaningfully to their
+respective latent constructs.
+Finally, to assess internal consistency, we applied the Omega reliability coefficient, which is
+particularly suited for multidimensional constructs and provides a more accurate estimate of
+reliability than Cronbach’s alpha when factor loadings vary [85]. The Omega values were strong
+across all constructs, with 0.94 for fairness perceptions, 0.93 for job satisfaction, and  |||  Comprehensive explanations +
+SE Context
+C1: Customer/Client Relations
+C2: Recruitment
+C3: Treatment
+C4: Policy + +
+C5: Evaluation + +
+C6: Working Hours +
+C7: Allocation of Work + + +
+C8: Income +
+C9: Authorship + + + + +
+C10: Demand + + +
+50% ≤ OR < 100% 100% ≤ OR < 200% OR ≥ 200%
+Abbreviations in the first row refer to job satisfaction composite factors and are explained in Table 4.
+For example, among interpersonal fairness items, being treated with respect (Int2) had the greatest
+effect, increasing the likelihood of higher overall job satisfaction by 240% (OR = 3.40, 95% CI [2.19,
+5.37]). This suggests that when employees feel respected, they are more than twice as likely to
+report higher levels of job satisfaction. Similarly, within procedural fairness, ethical and moral
+processes (P1) increased the odds of higher overall job satisfaction by 128% (OR = 2.28, 95% |||  et al. [115].
+For fairness contexts (10 items), parallel analysis suggested a unidimensional structure, which was
+supported by good fit indices (RMSEA = 0.081, TLI = 0.903, RMSR = 0.07), indicating that fairness
+experiences across SE scenarios feflect a single construct.
+CFA was subsequently performed to confirm these structures. The fairness perceptions model
+showed good fit (Comparative Fit Index(CFI) = 0.921, TLI = 0.909, RMSEA = 0.076, Standard-
+ized Root Mean Squared Residual (SRMR) = 0.076), supporting Colquitt’s 4D framework.
+The job satisfaction model demonstrated acceptable fit (CFI = 0.857, TLI = 0.830, RMSEA = 0.101,
+SRMR = 0.082), reflecting the exploratory nature of adapting the factors by Storey et al. The fair-
+ness contexts model confirmed the unidimensional structure with strong fit indices ( ||| satisfaction within various SE contexts. To do this, we applied a similar analysis to the one used
+for RQ1, focusing on the relationship between fairness experiences and job satisfaction in specific
+scenarios.
+This analysis was conducted using the MASS package in R. Additionally, we calculated Odds
+Ratios (OR) to quantify the strength of the associations, providing a clear measure of the effect
+size for each predictor variable.
+4.5.2 Moderation Analysis. Afterperformingtheordinallogisticregressionanalysis,weexplored
+howtheobservedrelationshipsdifferacrossdemographicgroupsbyemployingmoderationanalysis
+throughRQ2andRQ3.1.Moderationanalysistestswhetheravariable,suchasademographicfactor,
+influences the direction and/or strength of the relationship between an independent variable (e.g.,
+perception of fairness) and a dependent variable (e.g., job satisfaction) [13]. For example, suppose
+we find that perceptions of procedural fairness are positively associated with job satisfaction.
+A moderation analysis might examine whether this relationship is stronger for women than
+for men.
+In moderation analysis, the effect size can be positive or negative. A positive effect size indicates
+that the relationship between fairness",Pass
+B,9,How many composite factors resulted from grouping the job satisfaction factors?,Seven,16,BAAI/bge-small-en-v1.5,512,50,3,20.12,923.12,943.25,1548,1618,12,0.006330021465,Seven composite factors resulted from grouping the job satisfaction factors.," Factors
+The goal of this step is to identify potential natural groupings or clusters among job satisfaction
+factors, which can help us treat related factors as cohesive units for more effective analysis. While
+thejobsatisfactionfactorsinourstudyaredesignedtobeindependenttoensurecleardifferentiation
+between the factors, it is possible that some factors receive similar reactions from respondents.
+This similarity suggests that there may be natural groupings or clusters among the factors, which
+might not be immediately obvious. For example, respondents might perceive satisfaction with
+appreciation and feedback as related, reflecting a common underlying sentiment.
+To uncover these natural groupings, we first checked for the independence of factors by calcu-
+lating the correlations between the satisfaction scores for each pair of factors using the Spearman
+ACM Transactions on Software Engineering and Methodology, Vol. 35, No. 5, Article 137. Publication date: April 2026.
+Fairness Matters for Software Practitioners 137:15
+Fig. 2. Dendrogram of clustering job satisfaction factors into groups.
+method. The Spearman correlation method is suitable for ordinal data, like Likert-scale responses,
+because it assesses how well the relationship between two variables can be described by a mono-
+tonic function [135]. For example, if the satisfaction scores for feedback and appreciation are highly
+correlated, it suggests that respondents who rate feedback highly also tend to rate appreciation
+highly.
+After establishing the relationships between factors through correlation analysis, we computed
+the dissimilarity matrix using the Manhattan distance, which is appropriate for ordinal data.
+Compared to the Euclidean distance, the Manhattan distance provides a more robust measure
+when dealing with ordinal or non-normally distributed variables, as it does not assume interval-
+scaleddataorlinearrelationships[102].TheManhattandistancemeasurestheabsolutedifferences
+between the pairwise correlation coefficients, summing these differences across all pairs [131].
+This method helps to quantify how dissimilar each pair of job satisfaction factors is based on their
+correlationvalues[131].For instance,alowvaluefor theManhattandistancebetween satisfaction
+with benefits and satisfaction with salary suggests that these factors are closely related in how
+respondents perceive them.
+Wethenperformedhierarchicalclusteringusingtheaveragelinkagemethod,implemented
+in R with the hclust() function ||| with benefits and satisfaction with salary suggests that these factors are closely related in how
+respondents perceive them.
+Wethenperformedhierarchicalclusteringusingtheaveragelinkagemethod,implemented
+in R with the hclust() function [58, 73]. The average linkage method calculates the average
+distance between all pairs of factors in two clusters, merging the clusters with the smallest average
+distance first. This approach ensures that clusters are formed based on the overall similarity of their
+members, rather than just the closest or farthest points, which helps maintain balanced clusters.
+The result of the hierarchical clustering is visualized in a dendrogram (Figure 2), a tree-like
+diagram that illustrates how clusters are merged at different distance thresholds. For instance, if
+ACM Transactions on Software Engineering and Methodology, Vol. 35, No. 5, Article 137. Publication date: April 2026.
+137:16 E. Sesari et al.
+Table 4. Composite Factors of Practitioners’ Job Satisfaction
+Composite Factor Satisfaction Aspects
+Overall (ALL) Overall
+Rewards and Work–Life Balance (RWB)
+Rewards
+Work–Life Balance
+Promotion
+Job Security (SEC) Job Security
+Manager (MNG)
+Feedback
+Appreciation
+Manager
+Work Culture (CLT)
+Organization Culture
+Priority
+Team Culture
+Collaboration
+Performance (PRF) Productivity Ability
+Compensation (COM) Salary Benefits
+satisfaction with benefits and satisfaction with salary are closely related, they will be merged early
+in the dendrogram.
+To identify clusters that were highly correlated, we focused on groups with a correlation of 2.7
+or more. This threshold allowed us to group the 16 job satisfaction aspects into six distinct clusters
+(i.e., Composite Factors (CFs)).
+Additionally, we made a slight adjustment by separating the overall satisfaction factor from CF3,
+treating it as a distinct CF. This adjustment led to a final set of seven CFs, as shown in Table 4. For
+example, satisfaction with benefits and salary was highly correlated, so we combined these factors
+into the CF compensation. When combining factors, we averaged their scores; for instance, if the
+satisfaction scores for benefits and salary were 3 and 4, respectively, the score for compensation
+would be (3 + 4)/2 = 3.5.
+By grouping similar job satisfaction |||  are linked to how satisfied practitioners
+feel with their compensation. For RQ3, we aimed to translate the broader understanding of fairness
+perceptions into actionable strategies by examining how specific fairness perceptions relate to job
+satisfaction within various SE contexts. To do this, we applied a similar analysis to the one used
+for RQ1, focusing on the relationship between fairness experiences and job satisfaction in specific
+scenarios.
+This analysis was conducted using the MASS package in R. Additionally, we calculated Odds
+Ratios (OR) to quantify the strength of the associations, providing a clear measure of the effect
+size for each predictor variable.
+4.5.2 Moderation Analysis. Afterperformingtheordinallogisticregressionanalysis,weexplored
+howtheobservedrelationshipsdifferacrossdemographicgroupsbyemployingmoderationanalysis
+throughRQ2andRQ3.1.Moderationanalysistestswhetheravariable,suchasademographicfactor,
+influences the direction and/or strength of the relationship between an independent variable (e.g.,
+perception of fairness) and a dependent variable (e.g., job satisfaction) [13]. For example, suppose
+we find that perceptions of procedural fairness are positively associated with job satisfaction.
+A moderation analysis might examine whether this relationship is stronger for women than
+for men.
+In moderation analysis, the effect size can be positive or negative. A positive effect size indicates
+that the relationship between fairness perceptions and job satisfaction is stronger for the demo-
+graphic group being analyzed compared to the reference group, while a negative effect size suggests
+a weaker relationship. For example, in our analysis of ethnicity representation, the analysis used a
+diverse/balanced team as the reference group. A positive effect size for the underrepresented group
+indicates that the impact of fairness perceptions on job satisfaction is stronger for individuals in
+underrepresented teams compared to those in balanced teams.
+In our study, we specifically examined the potential moderating effects of various demographic
+factors, as described in Section 5.1. Due to the imbalance in the distribution of demographic
+categories among our respondents (as shown in Table 5), initially, we were only able to effectively
+analyze the moderating effects for three demographic groups: gender, ethnicity representation, and
+work limitation.Subsequently,wesimplifiedthecategoriesfortheremainingdemographicgroupsto
+improve the analysis. For instance, ethnicity was grouped into Asian and Non-Asian categories, and
+work experience was",Pass
+A,10,"Which interpersonal fairness item had the greatest effect on overall job satisfaction, and what was its odds ratio?","Treated with respect (Int2), OR = 3.40",22,sentence-transformers/all-MiniLM-L6-v2,256,50,8,7.95,2146.4,2154.35,2068,2171,37,0.01388053146,"Being treated with respect (Int2) had the greatest effect, increasing the likelihood of higher overall job satisfaction by 240% (OR = 3.40).","s?
+The results of the regression analysis are summarized in the third section of Table 7. We found
+positive and significant correlations between job satisfaction and fairness experiences in specific
+SE contexts (see [1]).
+Overall job satisfaction is significantly correlated with a high level of fairness experience in
+several specific SE contexts, particularly in the areas of demand (C10) (OR = 1.73, 95% CI [1.27,
+2.37]), authorship (C9) (OR = 1.59, 95% CI [1.15, 2.18]), allocation of work (C7) (OR = 1.56, 95% CI
+[1.13, 2.17]), and policy (C4) (OR = 1.54, 95% CI [1.14, 2.08]). Additionally, as observed in RQ1, all
+four dimensions of fairness, distributive, procedural, interpersonal, and informational fairness, are
+linked to higher overall satisfaction. This suggests that activities associated with all four fairness
+dimensions in these contexts contribute to higher overall job satisfaction |||  Comprehensive explanations +
+SE Context
+C1: Customer/Client Relations
+C2: Recruitment
+C3: Treatment
+C4: Policy + +
+C5: Evaluation + +
+C6: Working Hours +
+C7: Allocation of Work + + +
+C8: Income +
+C9: Authorship + + + + +
+C10: Demand + + +
+50% ≤ OR < 100% 100% ≤ OR < 200% OR ≥ 200%
+Abbreviations in the first row refer to job satisfaction composite factors and are explained in Table 4.
+For example, among interpersonal fairness items, being treated with respect (Int2) had the greatest
+effect, increasing the likelihood of higher overall job satisfaction by 240% (OR = 3.40, 95% CI [2.19,
+5.37]). This suggests that when employees feel respected, they are more than twice as likely to
+report higher levels of job satisfaction. Similarly, within procedural fairness, ethical and moral
+processes (P1) increased the odds of higher overall job satisfaction by 128% (OR = 2.28, 95% |||  Fairness and Job Satisfaction Are Related
+Therelationshipbetweenfairnessandjobsatisfactionhasbeenextensivelystudiedinorganizational
+justice literature. Research has consistently shown strong links between procedural fairness and
+overall job satisfaction [90, 132]. Additionally, Masterson et al. found that procedural fairness was
+a stronger predictor of job satisfaction than interpersonal and informational fairness, although all
+were significant factors [83]. To explore the broader impact of fairness in organizational settings,
+Colquitt’s meta-analysis of organizational justice research examined the outcomes of 183 empirical
+studies across multiple fields, confirming the strong influence of perceived fairness on factors like
+organizational commitment, citizenship behaviors, and job satisfaction [31].
+Fairness has been shown to have a major impact on job satisfaction across various industries.
+For instance, fairness in management practices significantly influences nurse retention and job
+satisfaction in healthcare [67]. In the manufacturing sector, procedural fairness enhances employee
+commitment and decreases turnover intentions [70]. Similarly, in education, fairness in workload
+distribution and rewards strongly predicts teacher satisfaction [89].
+In the realm of SE, job satisfaction plays an essential role in improving employee retention,
+well-being, and productivity [4 ||| Fairness, in this context, is understood as a personal judgment or evaluation of organizational
+activities, particularly regarding whether these activities are perceived as moral and praiseworthy
+[53]. To accurately assess this experience of fairness, we rely on the framework developed by
+Colquitt in 2001 [29].
+Our survey design draws inspiration from the survey questions developed by Colquitt [29],
+which consists of 20 questions. These questions assess various four dimensions of fairness, namely
+distributive, procedural, interpersonal, and informational fairness. Colquitt’s measure of fairness
+was developed through careful research, creating survey items based on key studies in the field of
+organizational justice, which examines fairness in workplaces. These items were tested in different
+settings, such as in a university classroom and a manufacturing company, to ensure they worked
+well across various environments [29].
+ByaligningwithColquitt’swell-establishedframework,weensurethatourapproachisgrounded
+in a reliable foundation. The 20 items used in our survey, as developed by Colquitt [29], are listed
+in Table 1.
+4.1.2 Measuring Job Satisfaction. Given the connection between perceptions of |||  in the workplace, Colquitt et al. con-
+ducted a meta-analytic review of organizational justice literature, which included 120 separate
+meta-analyses of 183 empirical studies [31]. This comprehensive review examined the effects of
+organizational fairness—encompassing distributive, procedural, interpersonal, and informational
+fairness—on several outcomes, including job satisfaction. Colquitt’s findings demonstrate a signifi-
+cant link between perceptions of fairness and job satisfaction across diverse contexts. For example,
+in the healthcare sector, fairness in managerial practices has been shown to significantly influence
+nurse retention and job satisfaction [67]. In the manufacturing industry, procedural justice has
+been found to enhance employee commitment and reduce turnover intentions [70]. Similarly, in
+educational settings, distributive fairness related to workload and rewards is a key predictor of
+teacher satisfaction [89]. Given these findings across various fields, an important question arises:
+does the observed link between fairness and job satisfaction apply in the context of SE?
+In the SE literature, enhanced job satisfaction among developers is known to improve employee
+attraction, retention, and well-being [43]. Furthermore, many researchers and companies assume
+thatmoresatisfieddeveloperst |||  related to pay, benefits, and rewards is significantly linked to
+job satisfaction [59].
+Work–Life Balance When decision-making processes are perceived as fair, employees are more likely
+to be satisfied with their work–life balance and less likely to consider leaving the
+organization [20].
+Promotion Employees’ perceptions of fairness in performance evaluations and promotion
+decisions are critical to their sense of value and belonging within an organiza-
+tion [125].
+Job Security When employees perceive fair treatment in the organization, they tend to feel
+more secure in their jobs [118].
+Supplementary Material [1]. The selected factors, presented in Table 2, allow us to analyze job
+satisfaction in a way that is directly linked to perceptions of fairness.
+4.1.3 Measuring Fairness Experiences in SE Contexts. Our study measures perceptions of fairness
+usingsurveyquestionsdevelopedbyColquitt[29],groundedintheorganizationaljusticeliterature’s
+theoretical framework for understanding fairness in the workplace. However, it is also important
+to understand how these fairness dimensions manifest in real-world scenarios, particularly within
+the context of SE. Exploring concrete examples of fairness issues in specific contexts can reveal
+ ||| satisfaction within various SE contexts. To do this, we applied a similar analysis to the one used
+for RQ1, focusing on the relationship between fairness experiences and job satisfaction in specific
+scenarios.
+This analysis was conducted using the MASS package in R. Additionally, we calculated Odds
+Ratios (OR) to quantify the strength of the associations, providing a clear measure of the effect
+size for each predictor variable.
+4.5.2 Moderation Analysis. Afterperformingtheordinallogisticregressionanalysis,weexplored
+howtheobservedrelationshipsdifferacrossdemographicgroupsbyemployingmoderationanalysis
+throughRQ2andRQ3.1.Moderationanalysistestswhetheravariable,suchasademographicfactor,
+influences the direction and/or strength of the relationship between an independent variable (e.g.,
+perception of fairness) and a dependent variable (e.g., job satisfaction) [13]. For example, suppose
+we find that perceptions of procedural fairness are positively associated with job satisfaction.
+A moderation analysis might examine whether this relationship is stronger for women than
+for men.
+In moderation analysis, the effect size can be positive or negative. A positive effect size indicates
+that the relationship between fairness |||  relationships between fairness and
+job satisfaction, beyond just statistical significance in the ordinal regression analysis. To ad-
+dress this, we calculated percentage-based OR as effect sizes and only focused on relationships
+with an OR of 50% or more. This threshold ensured that the results we considered had sub-
+stantial practical relevance, filtering out statistically significant results with limited practical
+implications.
+Last, perceptions of fairness can vary across cultural contexts. Since SE teams are often diverse
+andglobal,fairnessconstructsrootedinWesternorganizationaljusticeliteraturemaynotfullyapply
+in non-Western settings. By conducting a moderation analysis in RQ2 and RQ3.1, we accounted
+for potential demographic differences, ensuring that our findings reflect the varying impacts of
+fairness perceptions on job satisfaction across diverse groups.
+Internal Validity. While our study highlights a relationship between fairness perceptions and job
+satisfaction, we acknowledge that it does not conclusively establish causality. However, this limita-
+tion is mitigated by both our calculation of the effect size and the extensive body of organizational
+justice literature, consistent with prior research across various industries and contexts [31, 67, 70,
+83, 89, 90",Pass
+B,10,"Which interpersonal fairness item had the greatest effect on overall job satisfaction, and what was its odds ratio?","Treated with respect (Int2), OR = 3.40",22,BAAI/bge-small-en-v1.5,512,50,3,20.69,1965.79,1986.48,1556,1626,37,0.01292214947,"Being treated with respect (Int2) had the greatest effect, increasing the likelihood of higher overall job satisfaction by 240% (OR = 3.40).","8: Income +
+C9: Authorship + + + + +
+C10: Demand + + +
+50% ≤ OR < 100% 100% ≤ OR < 200% OR ≥ 200%
+Abbreviations in the first row refer to job satisfaction composite factors and are explained in Table 4.
+For example, among interpersonal fairness items, being treated with respect (Int2) had the greatest
+effect, increasing the likelihood of higher overall job satisfaction by 240% (OR = 3.40, 95% CI [2.19,
+5.37]). This suggests that when employees feel respected, they are more than twice as likely to
+report higher levels of job satisfaction. Similarly, within procedural fairness, ethical and moral
+processes (P1) increased the odds of higher overall job satisfaction by 128% (OR = 2.28, 95% CI
+[1.54, 3.37]), indicating that ethical practices are crucial for building trust between employees and
+management.
+Additionally, accurate information (P3), another procedural fairness item, was shown to increase
+satisfaction with job security by 113% (OR = 2.13, 95% CI [1.43, 3.16]). This finding suggests that
+when software practitioners receive clear, reliable, and accurate information about organizational
+processes and decisions, they feel more secure in their roles.
+ACM Transactions on Software Engineering and Methodology, Vol. 35, No. 5, Article 137. Publication date: April 2026.
+Fairness Matters for Software Practitioners 137:23
+Fairnessperceptionsalsosignificantlyimpactotheraspectsofjobsatisfaction,suchasrewardsand
+work–life balance (RWB) and compensation (COM). For instance, when outcomes reflect contribution
+(D3) and effort (D4), satisfaction with rewards and work–life balance is boosted by 80% and 53%,
+respectively. Similarly, when outcomes are considered appropriate (D2) and reflect effort (D4),
+satisfaction with compensation is enhanced by 90% and 132%, respectively. This suggests that when
+organizations ensure that outcomes reflect contribution and effort, practitioners are more likely to
+be satisfied with their rewards |||  (P6), and the ability to appeal
+decisions (P7).
+This suggests that, to increase the satisfaction of underrepresented developers with their man-
+agers,organizationsshouldprioritizecreatinganinclusiveenvironmentwherethesedevelopersfeel
+heard and valued. Developers from underrepresented groups feel more strongly about these aspects
+of fairness compared to those in balanced or diverse teams, likely because they may face greater
+challenges in having their voices heard. Minority workers may be more sensitive to supervisory
+support,giventheirexperiencesofbeingunderrepresented.Therefore,theytendtocloselyassociate
+their perception of fairness with their manager’s actions and behaviors.
+Work Experience. The analysis reveals that for practitioners with more than 3 years of experience,
+most significant fairness factors show negative effect sizes. This indicates that the impact of fairness
+on job satisfaction is weaker for these more experienced practitioners compared to those with
+less than 3 years of experience (the reference group). Conversely, fairness factors have a stronger
+influence on the job satisfaction of practitioners with less than 3 years of experience.
+For practitioners with less than 3 years of experience, there is a significant correlation between
+all interpersonal fairness items and their satisfaction with performance (PRF). This means that these
+less experienced practitioners feel more satisfied with their performance when they are treated
+with politeness, dignity, and respect, and when inappropriate behavior or comments are absent.
+This may be because early-career practitioners are still developing their professional identity and
+skills. As a result, they may place a greater emphasis on interpersonal interactions to validate their
+contributions and build confidence in their abilities.
+Additionally, there is a correlation between outcome reflecting effort (D4), being treated with
+respect (Int2), and overall job satisfaction (ALL) for practitioners with less than 3 years of experience.
+This indicates that these practitioners are more satisfied with their overall job when their outcomes,
+such as promotions or compensation, are aligned with the effort they have put in, and when they
+are treated with respect. For less experienced practitioners, having their hard work recognized and
+rewarded is crucial to their sense of achievement and professional growth. When their outcomes
+reflect their effort, they feel valued, which increases their overall job satisfaction. Additionally,
+respectful treatment from colleagues and managers reinforces their sense of belonging within the
+organization.
+Finally, the less experienced developers also feel significantly stronger about their satisfaction
+with their job security (SEC). This is particularly evident |||  are linked to how satisfied practitioners
+feel with their compensation. For RQ3, we aimed to translate the broader understanding of fairness
+perceptions into actionable strategies by examining how specific fairness perceptions relate to job
+satisfaction within various SE contexts. To do this, we applied a similar analysis to the one used
+for RQ1, focusing on the relationship between fairness experiences and job satisfaction in specific
+scenarios.
+This analysis was conducted using the MASS package in R. Additionally, we calculated Odds
+Ratios (OR) to quantify the strength of the associations, providing a clear measure of the effect
+size for each predictor variable.
+4.5.2 Moderation Analysis. Afterperformingtheordinallogisticregressionanalysis,weexplored
+howtheobservedrelationshipsdifferacrossdemographicgroupsbyemployingmoderationanalysis
+throughRQ2andRQ3.1.Moderationanalysistestswhetheravariable,suchasademographicfactor,
+influences the direction and/or strength of the relationship between an independent variable (e.g.,
+perception of fairness) and a dependent variable (e.g., job satisfaction) [13]. For example, suppose
+we find that perceptions of procedural fairness are positively associated with job satisfaction.
+A moderation analysis might examine whether this relationship is stronger for women than
+for men.
+In moderation analysis, the effect size can be positive or negative. A positive effect size indicates
+that the relationship between fairness perceptions and job satisfaction is stronger for the demo-
+graphic group being analyzed compared to the reference group, while a negative effect size suggests
+a weaker relationship. For example, in our analysis of ethnicity representation, the analysis used a
+diverse/balanced team as the reference group. A positive effect size for the underrepresented group
+indicates that the impact of fairness perceptions on job satisfaction is stronger for individuals in
+underrepresented teams compared to those in balanced teams.
+In our study, we specifically examined the potential moderating effects of various demographic
+factors, as described in Section 5.1. Due to the imbalance in the distribution of demographic
+categories among our respondents (as shown in Table 5), initially, we were only able to effectively
+analyze the moderating effects for three demographic groups: gender, ethnicity representation, and
+work limitation.Subsequently,wesimplifiedthecategoriesfortheremainingdemographicgroupsto
+improve the analysis. For instance, ethnicity was grouped into Asian and Non-Asian categories, and
+work experience was",Pass
